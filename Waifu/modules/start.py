@@ -14,5 +14,5 @@ async def start(client,message):
             InlineKeyboardButton("➕ Add Me To Your Group ➕", url="http://t.me/WaifuHunterXBot?startgroup=true"),
         ],
     ]
-    return await message.reply_photo(photo="https://telegra.ph/file/643c7a3e1ba1f10e385ab.jpg",caption="ask @CipherFlame for start text",reply_markup=InlineKeyboardMarkup(BUTT))
+    return await message.reply_photo(photo="https://telegra.ph/file/77397f9d86278d8d0b519.jpg",caption="ask @CipherFlame for start text",reply_markup=InlineKeyboardMarkup(BUTT))
     
