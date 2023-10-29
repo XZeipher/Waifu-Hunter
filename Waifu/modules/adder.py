@@ -28,9 +28,18 @@ async def adder(client , message):
     pic = upload_file(down)
     link = f"https://graph.org{pic[0]}"
     cap = replied.caption.split("+")
-    name = cap[0]
-    anime = cap[1]
-    rarity = cap[2]
+    name = cap[0].title()
+    anime = cap[1].title()
+    if cap[2] == "🔮":
+        rarity = "🔮 Limited-Time"
+    elif cap[2] == "🟡":
+        rarity = "🟡 Legendary"
+    elif cap[2] == "🟣":
+        rarity = "🟣 Rare"
+    elif cap[2] == "🟢":
+        rarity = "🟢 Common"
+    else:
+        return await message.reply_text("Invalid Rarity.\nAllowed Rarity : [🟢,🟣,🟡,🔮]")
     cusr.execute("INSERT INTO character_db (name , anime , rarity , pic) VALUES (%s , %s , %s , %s)",(name,anime,rarity,link,))
     DB.commit()
     return await message.reply_photo(link,caption=f"✨ Added Character in Database.\nName : {name}\nAnime : {anime}\nRarity : {rarity}")
