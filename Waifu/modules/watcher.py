@@ -5,15 +5,15 @@ from pyrogram import *
 from pyrogram.types import *
 
 WATCH_DICT = {}
-pop_text = """**A Character has appeared!
+pop_text = """**A Waifu has appeared!
 Add him/her to your harem by sending**
 /protecc name"""
 
-lost_text = """rip, the character has run away already...
-His/Her name is {}, remember it next time!"""
+lost_text = """rip, the waifu has run away already...
+His/Her name is **{}**, remember it next time!"""
 
-catch_text = """✔️ OwO you caught {}.
-This Character has been added to your harem."""
+catch_text = """✔️ OwO you caught **{}**.
+This waifu has been added to your harem."""
 
 
 @Client.on_message(filters.group, group=69)
