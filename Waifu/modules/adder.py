@@ -30,13 +30,13 @@ async def adder(client , message):
     cap = replied.caption.split("+")
     name = cap[0].title()
     anime = cap[1].title()
-    if cap[2] == "🔮":
+    if cap[2].title() == "Limited":
         rarity = "🔮 Limited-Time"
-    elif cap[2] == "🟡":
+    elif cap[2].title() == "Legendary":
         rarity = "🟡 Legendary"
-    elif cap[2] == "🟣":
+    elif cap[2].title() == "Rare":
         rarity = "🟣 Rare"
-    elif cap[2] == "🟢":
+    elif cap[2].title() == "Common":
         rarity = "🟢 Common"
     else:
         return await message.reply_text("Invalid Rarity.\nAllowed Rarity : [🟢,🟣,🟡,🔮]")
