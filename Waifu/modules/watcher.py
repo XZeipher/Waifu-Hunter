@@ -33,10 +33,14 @@ async def _watchers(_, message):
             anime = data[2]
             rarity = data[3]
             pic = data[4]
+        except:
+            return
         try:
             msg = await _.send_photo(chat_id, photo=pic, caption=pop_text)
             WATCH_DICT[chat_id]['name'] = name
             WATCH_DICT[chat_id]['pic'] = pic
+            WATCH_DICT[chat_id]['anime'] = anime
+            WATCH_DICT[chat_id]['rarity'] = rarity
         except errors.FloodWait as e:
             await asyncio.sleep(e.value)
 
