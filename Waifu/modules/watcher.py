@@ -26,7 +26,7 @@ async def _watchers(_, message):
     WATCH_DICT[chat_id]['count'] += 1
     if WATCH_DICT[chat_id]['count'] == WATCH_DICT[chat_id]['interval']:
         try:
-        	cursor.execute("SELECT * FROM character_db")
+            cursor.execute("SELECT * FROM character_db")
             result = cursor.fetchall()
             data = random.choice(result)
             name = data[1]
