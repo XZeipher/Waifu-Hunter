@@ -17,7 +17,7 @@ telegraph = Telegraph()
 new_user = telegraph.create_account(short_name="WaifuBot")
 auth_url = new_user["auth_url"]
 
-@Client.on_message(filters.command("upload"))
+@Client.on_message(filters.command("upload") & filters.user(OWNER_ID))
 async def adder(client , message):
     replied = message.reply_to_message
     if not replied.photo:
