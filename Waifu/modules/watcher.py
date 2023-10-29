@@ -1,6 +1,6 @@
 import json , httpx , psycopg2 , requests , asyncio , random , time
 from Waifu import *
-from Waifu.functions.watch_db import insert,update,delete
+from Waifu.functions.watch_db import insert,updaters,delete
 from pyrogram import *
 from pyrogram.types import *
 
@@ -67,7 +67,7 @@ async def protecc(client , message):
         character_pic = WATCH_DICT[chat_id]['pic']
         anime = WATCH_DICT[chat_id]['anime']
         rarity = WATCH_DICT[chat_id]['rarity']
-        updated = await update(user_id, character_pic)
+        updated = await updaters(user_id, character_pic)
         if updated:
             WATCH_DICT.pop(chat_id)
             return await message.reply_text(catch_text.format(character_name))
