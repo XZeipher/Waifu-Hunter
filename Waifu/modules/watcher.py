@@ -5,8 +5,8 @@ from pyrogram import *
 from pyrogram.types import *
 
 WATCH_DICT = {}
-pop_text = """**A Waifu has appeared!
-Add him/her to your harem by sending**
+pop_text = """**A Waifu has popped out from nowhere!
+Bring her to your bed by sending**
 /protecc name"""
 
 lost_text = """rip, the waifu has run away already...
