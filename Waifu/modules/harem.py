@@ -43,15 +43,17 @@ async def harem(client, message):
     if not all_user_characters:
         return await message.reply_text("Sorry darling you haven't protecc'd any waifu 👀✨")
     result = await characters(str(user_id), page=1, characters_per_page=10)
-
+    
     harem_text = f"**👑 {message.from_user.mention}'s Harem (Page 1)\n\n**"
-    harem_text += "**⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n**"
     for item in result:
         id, user_id, name,anime,rarity, pic ,count= item
         if user_id not in user_data:
             user_data[user_id] = {"pics": []}
         user_data[user_id]["pics"].append(pic)
-        harem_text += f"**➥ {id} | {rarity} | {name} [👶] x{count}\n**"
+        harem_text += f"**🌅{anime}-**"
+        harem_text += "**⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n**"
+        harem_text += f"**🆔 {id} |🫧 {rarity} |💮 {name} [👀] x{count}\n**"
+        harem_text += "**⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n\n**"
 
     inline_buttons = [
         InlineKeyboardButton("Harem 👑", switch_inline_query_current_chat=f"user_data_inline.{user_id}")
