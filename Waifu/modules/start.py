@@ -39,8 +39,10 @@ async def start(client,message):
             InlineKeyboardButton("➕ Add Me To Your Group ➕", url="http://t.me/WaifuHunterXBot?startgroup=true"),
         ],
     ]
+    bot = await app.get_me()
+    name = bot.first_name
     if message.chat.type != ChatType.PRIVATE:
-        TEXT = f"""Hi! I'm {BOT_NAME} , If you want , I can send lustrous waifus in the group just for you.
+        TEXT = f"""Hi! I'm {name} , If you want , I can send lustrous waifus in the group just for you.
 
 📥 get your waifu on bed by guessing their names using /protecc name"""
     else:
