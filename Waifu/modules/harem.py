@@ -33,9 +33,9 @@ current_page = 1
 user_current_pages = {}
 
 async def get_user_characters(user_id):
-    return await is_player(user_id)
+    return await char(user_id)
 
-@Client.on_message(filters.command("harem"))
+@Client.on_message(filters.command(["harem","simp","simps"]))
 async def harem(client, message):
     user_id = message.from_user.id
     user_current_pages[user_id] = 1
@@ -43,16 +43,18 @@ async def harem(client, message):
     if not all_user_characters:
         return await message.reply_text("Sorry darling you haven't protecc'd any waifu 👀✨")
     result = await characters(str(user_id), page=1, characters_per_page=10)
-
-    harem_text = f"**👑 {message.from_user.mention}'s Harem (Page 1)\n\n**"
-    harem_text += "**⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n**"
+    anime_groups = {}
     for item in result:
-        id, user_id, name,anime,rarity, pic ,count= item
-        if user_id not in user_data:
-            user_data[user_id] = {"pics": []}
-        user_data[user_id]["pics"].append(pic)
-        harem_text += f"**➥ {id} | {rarity} | {name} [👶] x{count}\n**"
-
+        id, user_id, name, anime, rarity, pic, count = item
+        if anime not in anime_groups:
+            anime_groups[anime] = []
+        anime_groups[anime].append(item)
+    harem_text = f"{message.from_user.mention}'s Harem\n\n"
+    for anime, items in anime_groups.items():
+        harem_text += f"🏖️ {anime}\n⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n"
+        for item in items:
+            id, user_id, name, rarity, pic, count = item
+            harem_text += f"🆔️ {id} | 🫧 {rarity} | 🌸 {name} × {count}\n⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n"
     inline_buttons = [
         InlineKeyboardButton("Harem 👑", switch_inline_query_current_chat=f"user_data_inline.{user_id}")
     ]
