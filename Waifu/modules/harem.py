@@ -53,7 +53,7 @@ async def harem(client, message):
     for anime, items in anime_groups.items():
         harem_text += f"🏖️ {anime}\n⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n"
         for item in items:
-            id, user_id, name, rarity, pic, count = item
+            id, user_id, name, rarity, pic, count = item[:7]
             harem_text += f"🆔️ {id} | 🫧 {rarity} | 🌸 {name} × {count}\n⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n"
     inline_buttons = [
         InlineKeyboardButton("Harem 👑", switch_inline_query_current_chat=f"user_data_inline.{user_id}")
