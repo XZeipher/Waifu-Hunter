@@ -35,7 +35,7 @@ user_current_pages = {}
 async def get_user_characters(user_id):
     return await is_player(user_id)
 
-@Client.on_message(filters.command(["harem","simp","simps"]))
+@Client.on_message(filters.command("harem"))
 async def harem(client, message):
     user_id = message.from_user.id
     user_current_pages[user_id] = 1
@@ -43,18 +43,20 @@ async def harem(client, message):
     if not all_user_characters:
         return await message.reply_text("Sorry darling you haven't protecc'd any waifu 👀✨")
     result = await characters(str(user_id), page=1, characters_per_page=10)
-    if user_id not in user_data:
-        user_data[user_id] = {'pics': []}
-    harem_text = f"{message.from_user.mention}'s Harem\n\n"
+
+    harem_text = f"**👑 {message.from_user.mention}'s Harem (Page 1)\n\n**"
+    harem_text += "**⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n**"
     for item in result:
-        id, user_id, name, rarity, pic ,count = item
-        user_data[user_id]['pics'].append(pic)
-        harem_text += f"🏖️ {anime}\n⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n"
-        harem_text += f"🆔️ {id} | 🫧 {rarity} | 🌸 {name} × {count}\n⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n"
+        id, user_id, name,anime,rarity, pic ,count= item
+        if user_id not in user_data:
+            user_data[user_id] = {"pics": []}
+        user_data[user_id]["pics"].append(pic)
+        harem_text += f"**➥ {id} | {rarity} | {name} [👶] x{count}\n**"
+
     inline_buttons = [
         InlineKeyboardButton("Harem 👑", switch_inline_query_current_chat=f"user_data_inline.{user_id}")
     ]
     inline_buttons.append(InlineKeyboardButton("➡️", callback_data="next_page"))
     reply_markup = InlineKeyboardMarkup([inline_buttons])
-    await message.reply_photo(user_data[user_id]['pics'][0], caption=harem_text, reply_markup=reply_markup)
+    await message.reply_photo(user_data[user_id]["pics"][0], caption=harem_text, reply_markup=reply_markup)
     user_data.pop(user_id)
