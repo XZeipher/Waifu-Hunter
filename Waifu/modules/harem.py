@@ -33,9 +33,9 @@ current_page = 1
 user_current_pages = {}
 
 async def get_user_characters(user_id):
-    return await char(user_id)
+    return await is_player(user_id)
 
-@Client.on_message(filters.command(["harem","simp","simps"]))
+@Client.on_message(filters.command("harem"))
 async def harem(client, message):
     user_id = message.from_user.id
     user_current_pages[user_id] = 1
