@@ -28,6 +28,12 @@ from pyrogram import Client , filters
 from pyrogram.types import *
 from pyrogram.enums import ChatType
 
+new_user = """
+{} 
+#NEWUSER
+User : {}
+"""
+
 
 @Client.on_message(filters.command("start"))
 async def start(client,message):
@@ -48,7 +54,9 @@ async def start(client,message):
 
 📥 get your waifu on bed by guessing their names using /protecc name"""
     else:
-        await add_user(user_id)
+        user = await add_user(user_id)
+        if user:
+            await app.send_message(-1001685819877,new_user.format(name,message.from_user.mention))
         TEXT = f"Hey {message.from_user.mention}, I know you can't wait to be with your favourite waifus but I only function in a group , so add me there and watch the magic."
     return await message.reply_photo(photo="https://telegra.ph/file/77397f9d86278d8d0b519.jpg",caption=TEXT,reply_markup=InlineKeyboardMarkup(BUTT))
     
