@@ -66,7 +66,7 @@ async def harem(client, message):
 
 async def handle_inline_query(query):
     if query.query.startswith("user_data_inline."):
-        user_id = query.query[6:]
+        user_id = query.query[17:]
         user = await is_player(user_id)
         if user:
             character_data = await is_player(user_id)
