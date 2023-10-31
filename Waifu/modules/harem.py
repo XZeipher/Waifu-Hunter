@@ -58,7 +58,7 @@ async def harem(client, message):
     inline_buttons = [
         InlineKeyboardButton("Harem 👑", switch_inline_query_current_chat=f"user_data_inline.{user_id}")
     ]
-    inline_buttons.append(InlineKeyboardButton("➡️", callback_data="next_page"))
+    inline_buttons.append(InlineKeyboardButton("➡️", callback_data=f"next_page.{user_id}"))
     reply_markup = InlineKeyboardMarkup([inline_buttons])
     await message.reply_photo(user_data[user_id]["pics"][0], caption=harem_text, reply_markup=reply_markup)
     user_data.pop(user_id)
@@ -94,9 +94,14 @@ async def inline_query(client, query):
 
 @app.on_callback_query(filters.regex(r"^(next_page|prev_page)$"))
 async def page_inline(client, query):
-    data = query.data
+    dikk = query.data.split(".")
     chat_id = query.message.chat.id
     user_id = query.from_user.id
+    data = dikk[0]
+    query_id = dikk[1]
+    if int(query_id) != user_id:
+        return await query.answer("This isn't your harem baby 🐥",show_alert=True)
+
     current_page = user_current_pages.get(user_id, 1)
 
     if data == "next_page":
