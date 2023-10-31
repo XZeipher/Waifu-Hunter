@@ -98,6 +98,8 @@ async def page_inline(client, query):
     chat_id = query.message.chat.id
     user_id = query.from_user.id
     current_page = user_current_pages.get(user_id, 1)
+    if user_id != query.message.reply_to_message.from_user.id:
+        return await query.answer("Soory darling 👀 but it's not your harem.",show_alert=True)
 
     if data == "next_page":
         current_page += 1
