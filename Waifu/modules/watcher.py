@@ -25,6 +25,7 @@ SOFTWARE.
 import json , httpx , psycopg2 , requests , asyncio , random , time
 from Waifu import *
 from Waifu.functions.watch_db import insert,updaters,delete
+from Waifu.funtions.stats_db import add_chat
 from pyrogram import *
 from pyrogram.types import *
 
@@ -32,6 +33,12 @@ WATCH_DICT = {}
 pop_text = """**A Waifu has popped out from nowhere!
 Bring her to your bed by sending**
 /protecc name"""
+
+new_chat = """
+{} 
+#NEWCHAT
+CHAT : {}
+"""
 
 lost_text = """rip, the waifu has run away already...
 His/Her name is **{}**, remember it next time!"""
@@ -43,6 +50,11 @@ This waifu has been added to your harem."""
 @Client.on_message(filters.group, group=69)
 async def _watchers(_, message):
     chat_id = message.chat.id
+    apps = await app.get_me()
+    bot_name = apps.first_name
+    chatting = await add_chat(chat_id)
+    if chatting:
+        await app.send_message(-1001685819877,new_chat.format(bot_name,message.chat.username))
     if not message.from_user:
         return
     if chat_id not in WATCH_DICT:
