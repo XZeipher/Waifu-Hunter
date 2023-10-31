@@ -62,3 +62,74 @@ async def harem(client, message):
     reply_markup = InlineKeyboardMarkup([inline_buttons])
     await message.reply_photo(user_data[user_id]["pics"][0], caption=harem_text, reply_markup=reply_markup)
     user_data.pop(user_id)
+
+
+async def handle_inline_query(query):
+    if query.query.startswith("user_data_inline."):
+        user_id = query.query[6:]
+        user = await is_player(user_id)
+        if user:
+            character_data = await is_player(user_id)
+            results = []
+            for item in character_data:
+                character_id, user_id, character_name,anime,rarity, character_pic,count = item
+                caption = f"✨OwO! Check out {query.from_user.mention}'s harem\n\n🆔: {character_id}\n💮 Waifu: {character_name} x{count}\n🌅 Anime:{anime}\n🎌 Rarity : {rarity}"
+                
+                results.append(InlineQueryResultPhoto(
+                    photo_url=character_pic,
+                    thumb_url=character_pic,
+                    caption=caption
+                ))
+            await query.answer(results, cache_time=0, is_gallery=True)
+        else:
+            message = "You have no characters."
+            await query.answer([InlineQueryResultArticle(
+                title="Not Found",
+                input_message_content=InputTextMessageContent(message)
+            )], cache_time=0)
+
+@app.on_inline_query()
+async def inline_query(client, query):
+    await handle_inline_query(query)
+
+@app.on_callback_query(filters.regex(r"^(next_page|prev_page)$"))
+async def page_inline(client, query):
+    data = query.data
+    chat_id = query.message.chat.id
+    user_id = query.from_user.id
+    current_page = user_current_pages.get(user_id, 1)
+
+    if data == "next_page":
+        current_page += 1
+    elif data == "prev_page" and current_page > 1:
+        current_page -= 1
+
+    result = await characters(str(user_id), page=current_page, characters_per_page=10)
+
+    if result:
+        harem_text = f"**👑 {query.from_user.mention}'s Harem (Page {current_page})\n\n**"
+        for item in result:
+            id, user_id, name, anime,rarity,pic,count = item
+            if user_id not in user_data:
+                user_data[user_id] = {"pics": []}
+            harem_text += f"**🌅{anime}-**"
+            harem_text += "**⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n**"
+            harem_text += f"**🆔 {id} |🫧 {rarity} |💮 {name} [👀] x{count}\n**"
+            harem_text += "**⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋⚋\n\n**"
+
+        inline_buttons = []
+
+        if current_page > 1:
+            inline_buttons.append(InlineKeyboardButton("«", callback_data="prev_page"))
+
+        if await characters(str(user_id), page=current_page + 1, characters_per_page=2):
+            inline_buttons.append(InlineKeyboardButton("»", callback_data="next_page"))
+
+        if current_page == 1:
+            inline_buttons.append(InlineKeyboardButton("Harem 👑", switch_inline_query_current_chat=f"user_data_inline.{user_id}"))
+
+        reply_markup = InlineKeyboardMarkup([inline_buttons])
+        await client.edit_message_caption(chat_id, query.message.id, harem_text, reply_markup=reply_markup)
+        user_current_pages[user_id] = current_page
+    else:
+        await query.answer("You have no more waifus darling.", show_alert=True)
