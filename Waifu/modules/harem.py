@@ -92,7 +92,7 @@ async def handle_inline_query(query):
 async def inline_query(client, query):
     await handle_inline_query(query)
 
-@app.on_callback_query(filters.regex(r"^(next_page|prev_page)$"))
+@app.on_callback_query(filters.regex(r"^(next_page.|prev_page.)$"))
 async def page_inline(client, query):
     dikk = query.data.split(".")
     chat_id = query.message.chat.id
