@@ -23,7 +23,7 @@ async def add_chat(chat_id):
         cusr.execute("INSERT INTO chats_db (chat_id) VALUES (%s)",(str(chat_id),))
         DB.commit()
         return True
-    return
+    return False
 
 async def add_user(user_id):
     cusr.execute("SELECT * FROM users_db WHERE user_id = %s",(str(user_id),))
@@ -32,4 +32,4 @@ async def add_user(user_id):
         cusr.execute("INSERT INTO users_db (user_id) VALUES (%s)",(str(user_id),))
         DB.commit()
         return True
-    return
+    return False
