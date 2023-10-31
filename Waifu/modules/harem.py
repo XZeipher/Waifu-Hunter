@@ -125,10 +125,10 @@ async def page_inline(client, query):
         inline_buttons = []
 
         if current_page > 1:
-            inline_buttons.append(InlineKeyboardButton("«", callback_data="prev_page"))
+            inline_buttons.append(InlineKeyboardButton("«", callback_data=f"prev_page.{user_id}"))
 
         if await characters(str(user_id), page=current_page + 1, characters_per_page=2):
-            inline_buttons.append(InlineKeyboardButton("»", callback_data="next_page"))
+            inline_buttons.append(InlineKeyboardButton("»", callback_data=f"next_page.{user_id}"))
 
         if current_page == 1:
             inline_buttons.append(InlineKeyboardButton("Harem 👑", switch_inline_query_current_chat=f"user_data_inline.{user_id}"))
