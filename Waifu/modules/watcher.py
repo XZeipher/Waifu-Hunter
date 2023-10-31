@@ -25,7 +25,7 @@ SOFTWARE.
 import json , httpx , psycopg2 , requests , asyncio , random , time
 from Waifu import *
 from Waifu.functions.watch_db import insert,updaters,delete
-from Waifu.funtions.stats_db import add_chat
+from Waifu.functions.stats_db import add_chat
 from pyrogram import *
 from pyrogram.types import *
 
