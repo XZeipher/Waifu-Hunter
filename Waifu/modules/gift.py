@@ -39,7 +39,7 @@ async def cancel(client,query):
     user_ids = data.split("_")[1]
     if int(user_ids) != user_id:
         return await query.answer("Sorry dear,\nbut this isn't your waifu.",show_alert=True)
-    return await query.edit_message_caption("Cancelled ❌")
+    return await query.edit_message_caption("**Cancelled ❌**")
 
 @app.on_callback_query(filters.regex(r"^confirmgift_"))
 async def confim_fuf(client,query):
@@ -59,4 +59,4 @@ async def confim_fuf(client,query):
     trying2 = await updaters(replied_id,pic)
     if not trying2:
         await insert(replied_id,name,anime,rarity,pic,count)
-    return await query.edit_message_caption(f"✅ {name} Gifted Successfully.")
+    return await query.edit_message_caption(f"**✅ {name} Gifted Successfully.**")
