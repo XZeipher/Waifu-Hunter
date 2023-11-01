@@ -39,5 +39,5 @@ async def cancel(client,query):
     user_ids = data.split("_")[1]
     if int(user_ids) != user_id:
         return await query.answer("Sorry dear,\nbut this isn't your waifu.",show_alert=True)
-    await query.delete()
+    await query.message.delete()
     return await query.message.reply_text("Cancelled ❌")
