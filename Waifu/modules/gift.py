@@ -1,5 +1,5 @@
 from Waifu import *
-from Waifu.functions.watch_db import select,insert,delete,updaters
+from Waifu.functions.watch_db import *
 from pyrogram import *
 from pyrogram.types import *
 
