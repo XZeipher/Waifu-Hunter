@@ -42,4 +42,13 @@ async def trade(client,message):
     if int(user_id2) != message.reply_to_message.from_user.id:
         return await message.reply_text(f"Other user don't have {name}\nso they can't gift it yet!")
     BUTT = InlineKeyboardMarkup([[InlineKeyboardButton("Accept", callback_data=f"accept_{replied_user.id}_{id1}_{id2}")],[InlineKeyboardButton("Reject", callback_data=f"reject_{replied_user.id}")]])
-    return await message.reply_to_message.reply_text(trade_text.format(message.from_user.mention,name2,name1,replied_user.mention),reply_markup=BUTT)
+    return await message.reply_to_message.reply_photo(photo="https://graph.org//file/3a2356afe27763f8dc52d.png",caption=trade_text.format(message.from_user.mention,name2,name1,replied_user.mention),reply_markup=BUTT)
+
+
+@app.on_callback_query(filters.regex(r"^reject_"))
+async def reject_trade(client, query):
+    data = query.data
+    user = data.split("_")[1]
+    if query.from_user.id != int(user):
+        return await query.answer("Sorry dear you can't reject it.",show_alert=True)
+    return await query.edit_message_caption("**Trade Rejected ❌**")
