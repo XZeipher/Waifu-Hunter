@@ -26,7 +26,7 @@ async def gifting(client,message):
         return await message.reply_text(f"You don't have {name}\nso you can't gift it yet!")
     confirmation_text = f"Are you sure you want to gift {name} to {replied_user.mention}?"
     confirmation_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton("Yes", callback_data=f"confirmgift_{user_id}_{id}")],
+            [InlineKeyboardButton("Yes", callback_data=f"confirmgift_{user_id}_{id}_{replied_user.id}")],
             [InlineKeyboardButton("No", callback_data=f"cancel_{user_id}")]
         ])
     return await message.reply_photo(photo="https://graph.org//file/cd9dadc930fc140623377.png",caption=confirmation_text,reply_markup=confirmation_markup)
@@ -45,6 +45,7 @@ async def cancel(client,query):
 async def confim_fuf(client,query):
     data = query.data
     user_ids = data.split("_")[1]
+    replied_id = data.split("_")[3]
     chat_id = query.message.chat.id
     ids = data.split("_")[2]
     check = await select(int(ids))
@@ -55,5 +56,7 @@ async def confim_fuf(client,query):
     trying = await decrease(user_id,pic)
     if not trying:
         await delete(user_id,name,anime,rarity,pic,count)
-    await insert(query.message.reply_to_message.id,name,anime,rarity,pic,count)
+    trying2 = await updaters(replied_id,pic)
+    if not trying2:
+        await insert(replied_id,name,anime,rarity,pic,count)
     return await query.edit_message_caption(f"✅ {name} Gifted Successfully.")
