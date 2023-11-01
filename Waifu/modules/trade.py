@@ -1,0 +1,45 @@
+from Waifu import *
+from Waifu.functions.watch_db import *
+from pyrogram import *
+from pyrogram.types import *
+
+trade_text = """
+🤝 {} has sent you a trade offer!
+
+They would like:
+{}
+
+In return, you will receive:
+{}
+
+will you accept {}?
+"""
+
+
+@Client.on_message(filters.command("trade") & filters.group)
+async def trade(client,message):
+    try:
+        id1 = message.text.split()[1]
+        id2 = message.text.split()[2]
+    except:
+        return await message.reply_text("Eg. /trade {your_character_id} {other_users_character_id}")
+    replied = message.reply_to_message
+    if not replied:
+        return await message.reply_text("reply to an user to trade waifus")
+    replied_user = message.reply_to_message.from_user
+    check1 = await select(int(id1))
+    if not check1:
+        return await message.reply_text("Your waifu ID doesn't exists")
+    check2 = await select(int(id2))
+    if not check2:
+        return await message.reply_text("Other User's waifu ID doesn't exists")
+    for info1 in check1:
+        ids1,user_id1,name1,anime1,rarity1,pic1,count1 = info1
+    for info2 in check2:
+        ids2,user_id2,name2,anime2,rarity2,pic2,count2 = info2
+    if int(user_id1) != message.from_user.id:
+        return await message.reply_text(f"You don't have {name}\nso you can't trade it yet!")
+    if int(user_id2) != message.reply_to_message.from_user.id:
+        return await message.reply_text(f"Other user don't have {name}\nso they can't gift it yet!")
+    BUTT = InlineKeyboardMarkup([[InlineKeyboardButton("Accept", callback_data=f"accept_{replied_user.id}_{id1}_{id2}")],[InlineKeyboardButton("Reject", callback_data=f"reject_{replied_user.id}")]])
+    return await message.reply_to_message.reply_text(trade_text.format(message.from_user.mention,name2,name1,replied_user.mention),reply_markup=BUTT)
