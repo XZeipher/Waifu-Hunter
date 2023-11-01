@@ -7,7 +7,7 @@ from pyrogram.types import *
 
 @Client.on_message(filters.command("gift") & filters.group)
 async def gifting(client,message):
-    if not message.text.split(" ")[1]:
+    if not message.text.split(maxsplit=1)[1]:
         return await message.reply_text("provide an waifu id")
     id = message.text.split(" ")[1]
     if not int(id):
