@@ -8,10 +8,9 @@ from pyrogram.types import *
 @Client.on_message(filters.command("gift") & filters.group)
 async def gifting(client,message):
     try:
-        bruh = message.text.split(maxsplit=1)[1]
+        id = message.text.split(maxsplit=1)[1]
     except:
         return await message.reply_text("provide an waifu id")
-    id = message.text.split(" ")[1]
     if not int(id):
         return await message.reply_text("provide valid id")
     replied = message.reply_to_message
