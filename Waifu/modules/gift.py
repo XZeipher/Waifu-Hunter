@@ -41,3 +41,22 @@ async def cancel(client,query):
         return await query.answer("Sorry dear,\nbut this isn't your waifu.",show_alert=True)
     await query.message.delete()
     return await query.message.reply_text("Cancelled ❌")
+
+@app.on_callback_query(filters.regex(r"^confirmgift_"))
+async def confim_fuf(client,query):
+    data = query.data
+    user_ids = data.split("_")[1]
+    chat_id = query.message.chat.id
+    ids = data.split("_")[2]
+    check = await select(int(ids))
+    if int(user_ids) != query.from_user.id:
+        return await query.answer("Sorry dear,\nbut this isn't your waifu.",show_alert=True)
+    for info in check:
+        id,user_id,name,anime,rarity,pic,count = info
+    trying = await decrease(user_id,pic)
+    if not trying:
+        await delete(user_id,name,anime,rarity,pic,count)
+    trying2 = await updaters(query.message.reply_to_message.id,pic)
+    if not trying2:
+        await insert(query.message.reply_to_message.id,name,anime,rarity,pic,count)
+    return await query.edit_message_caption(f"✅ {name} Gifted Successfully.")
