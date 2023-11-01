@@ -29,5 +29,5 @@ async def gifting(client,message):
             [InlineKeyboardButton("Yes", callback_data=f"confirmgift_{user_id}_{id}")],
             [InlineKeyboardButton("No", callback_data=f"cancel_{user_id}")]
         ])
-    return await message.reply_text(confirmation_text,reply_markup=confirmation_markup)
+    return await message.reply_photo(photo="https://graph.org//file/cd9dadc930fc140623377.png",caption=confirmation_text,reply_markup=confirmation_markup)
     
