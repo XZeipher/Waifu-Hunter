@@ -55,3 +55,4 @@ async def updaters(user_id,pic):
     cusr.execute("UPDATE user_data SET count = %s WHERE user_id = %s AND pic = %s",(str(new) , str(user_id),pic,))
     DB.commit()
     return True
+    
