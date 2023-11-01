@@ -30,4 +30,14 @@ async def gifting(client,message):
             [InlineKeyboardButton("No", callback_data=f"cancel_{user_id}")]
         ])
     return await message.reply_photo(photo="https://graph.org//file/cd9dadc930fc140623377.png",caption=confirmation_text,reply_markup=confirmation_markup)
-    
+
+@app.on_callback_query(filters.regex(r"^cancel_"))
+async def cancel(client,query):
+    data = query.data
+    chat_id = query.message.chat.id
+    user_id = query.from_user.id
+    user_ids = data.split("_")[1]
+    if int(user_ids) != user_id:
+        return await query.answer("Sorry dear,\nbut this isn't your waifu.",show_alert=True)
+    await query.delete()
+    return await query.message.reply_text("Cancelled ❌")
