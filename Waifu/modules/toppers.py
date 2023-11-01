@@ -10,7 +10,7 @@ async def ranking(client,message):
     chat_id = message.chat.id
     harem = await grpharem(chat_id)
     text = "⛩️♪ • Leaderboard • ♪⛩️\n\n"
-    for index, item in enumerate(top_10_entries, start=1):
+    for index, item in enumerate(harem, start=1):
         text += f"{index}. {item}\n"
     keyboard = [
         [InlineKeyboardButton("⛩️ Global ⛩️", callback_data='globharem')],
