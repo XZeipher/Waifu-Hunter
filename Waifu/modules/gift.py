@@ -55,7 +55,5 @@ async def confim_fuf(client,query):
     trying = await decrease(user_id,pic)
     if not trying:
         await delete(user_id,name,anime,rarity,pic,count)
-    trying2 = await updaters(query.message.reply_to_message.id,pic)
-    if not trying2:
-        await insert(query.message.reply_to_message.id,name,anime,rarity,pic,count)
+    await insert(query.message.reply_to_message.id,name,anime,rarity,pic,count)
     return await query.edit_message_caption(f"✅ {name} Gifted Successfully.")
