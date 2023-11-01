@@ -20,6 +20,6 @@ async def grpharem(chat_id):
     for group in alt:
         combined_data.extend(group)
     sorted_data = sorted(combined_data, key=lambda x: int(x[-1]), reverse=True)
-    formatted_list = [f"{item[1]} - {item[-1]}" for item in sorted_data]
+    formatted_list = [f"{await app.get_users(int(item[1])).mention} - {item[-1]}" for item in sorted_data]
     top_10_entries = formatted_list[:10]
     return top_10_entries
