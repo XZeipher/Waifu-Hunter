@@ -55,6 +55,17 @@ async def updaters(user_id,pic):
     cusr.execute("UPDATE user_data SET count = %s WHERE user_id = %s AND pic = %s",(str(new) , str(user_id),pic,))
     DB.commit()
     return True
+async def decrease(user_id,pic):
+    cusr.execute("SELECT count FROM user_data WHERE user_id = %s AND pic = %s",(str(user_id),pic,))
+    result = cusr.fetchone()
+    if not result:
+        return False
+    if int(result[0]) == 0:
+        return False
+    new = int(result[0]) - 1
+    cusr.execute("UPDATE user_data SET count = %s WHERE user_id = %s AND pic = %s",(str(new) , str(user_id),pic,))
+    DB.commit()
+    return True
 async def select(id):
     cusr.execute("SELECT * FROM user_data WHERE id = %s",(id,))
     result = cusr.fetchall()
