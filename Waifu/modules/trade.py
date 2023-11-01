@@ -52,3 +52,33 @@ async def reject_trade(client, query):
     if query.from_user.id != int(user):
         return await query.answer("Sorry dear you can't reject it.",show_alert=True)
     return await query.edit_message_caption("**Trade Rejected ❌**")
+
+
+@app.on_callback_query(filters.regex(r"^accept_"))
+async def accept_call(client,query):
+    user_id = query.from_user.id
+    data = query.data
+    id1 = data.split("_")[2]
+    id2 = data.split("_")[3]
+    replied_id = data.split("_")[1]
+    if user_id != int(replied_id):
+        return await query.answer("You dear you can't accept it.",show_alert=True)
+    user_info = await select(int(id1))
+    reply_info = await select(int(id2))
+    for u in user_info:
+        ids1,user1,name1,anime1,rarity1,pic1,count1 = u
+    for r in reply_info:
+        ids2,user2,name2,anime2,rarity2,pic2,count2 = r
+    trying = await decrease(user1,pic1)
+    if not trying:
+        await delete(user1,name1,anime1,rarity1,pic1,count1)
+    trying2 = await updaters(user1,pic2)
+    if not trying2:
+        await insert(user1,name2,anime2,rarity2,pic2,count2)
+    tryingx = await decrease(user2,pic2)
+    if not tryingx:
+        await delete(user2,name2,anime2,rarity2,pic2,count2)
+    tryingx2 = await updaters(user2,pic1)
+    if not tryingx2:
+        await insert(user2,name1,anime1,rarity1,pic1,count1)
+    return await query.edit_message_caption("✅🤝 Trade completed!")
