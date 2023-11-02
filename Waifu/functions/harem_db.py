@@ -1,7 +1,10 @@
 from Waifu import cusr,DB,app
 
 async def get_users(item):
-    search = await app.get_users(int(item))
+    try:
+        search = await app.get_users(int(item))
+    except:
+        return item
     return search.mention
 async def globrank():
     cusr.execute("SELECT * FROM user_data")
