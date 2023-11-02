@@ -9,7 +9,7 @@ async def ranking(client,message):
     temp = await message.reply_text("**fetching simps....**")
     chat_id = message.chat.id
     data = await grpharem(chat_id)
-    text = "⛩️♪ • Leaderboard • ♪⛩️\n\n"
+    text = "**⛩️♪ • Leaderboard • ♪⛩️\n\n**"
     for index, (user_id, count) in enumerate(data, start=1):
         try:
             user = await client.get_users(int(user_id))
