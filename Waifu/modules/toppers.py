@@ -11,8 +11,11 @@ async def ranking(client,message):
     data = await grpharem(chat_id)
     text = "⛩️♪ • Leaderboard • ♪⛩️\n\n"
     for index, (user_id, count) in enumerate(data, start=1):
-        user = await client.get_users(int(user_id))
-        text += f"{index}. {user.mention} • {count}\n"
+        try:
+            user = await client.get_users(int(user_id))
+            text += f"{index}. {user.mention} • {count}\n"
+        except:
+            pass
     keyboard = [
         [InlineKeyboardButton("⛩️ Global ⛩️", callback_data='globharem')],
     ]
@@ -34,15 +37,21 @@ async def harem_ranking(client,query):
         await query.answer()
         rank = await globrank()
         for index, (user_id, count) in enumerate(rank, start=1):
-            user = await client.get_users(int(user_id))
-            text += f"{index}. {user.mention} • {count}\n"
+            try:
+                user = await client.get_users(int(user_id))
+                text += f"{index}. {user.mention} • {count}\n"
+            except:
+                pass
         return await query.edit_message_caption(text,reply_markup=InlineKeyboardMarkup(keyboard))
     elif data == "grpharem":
         text = "**⛩️♪ • Leaderboard • ♪⛩️\n\n**"
         await query.answer()
         data = await grpharem(chat_id)
         for index, (user_id, count) in enumerate(data, start=1):
-            user = await client.get_users(int(user_id))
-            text += f"{index}. {user.mention} • {count}\n"
+            try:
+                user = await client.get_users(int(user_id))
+                text += f"{index}. {user.mention} • {count}\n"
+            except:
+                pass
         return await query.edit_message_caption(text,reply_markup=InlineKeyboardMarkup(keyboards))
     
