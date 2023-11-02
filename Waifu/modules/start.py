@@ -58,5 +58,5 @@ async def start(client,message):
         if user:
             await app.send_message(-1001685819877,new_user.format(name,message.from_user.mention))
         TEXT = f"Hey {message.from_user.mention}, I know you can't wait to be with your favourite waifus but I only function in a group , so add me there and watch the magic."
-    return await message.reply_photo(photo="https://telegra.ph/file/77397f9d86278d8d0b519.jpg",caption=TEXT,reply_markup=InlineKeyboardMarkup(BUTT))
+    return await message.reply_photo(photo="https://graph.org//file/e6143909bef2d121d6407.png",caption=TEXT,reply_markup=InlineKeyboardMarkup(BUTT))
     
