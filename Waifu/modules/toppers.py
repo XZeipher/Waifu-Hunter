@@ -17,7 +17,7 @@ async def ranking(client,message):
                 picture_count[user_id] += 1
             else:
                 picture_count[user_id] = 1
-    sorted_users = sorted(picture_count.items(), key=lambda x: x[1], reverse=True)
+    sorted_users = sorted(picture_count.items(), key=lambda x: x[1], reverse=True)[:10]
     text = "⛩️♪ • Leaderboard • ♪⛩️\n\n"
     for index, (user_id, count) in enumerate(sorted_users, start=1):
         user = await client.get_users(int(user_id))
