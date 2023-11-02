@@ -58,7 +58,7 @@ async def _watchers(_, message):
     if not message.from_user:
         return
     if chat_id not in WATCH_DICT:
-        WATCH_DICT[chat_id] = {'count': 0, 'running_count': 0, 'name': None, 'pic': None,'anime':None,'rarity':None, 'interval': 10}
+        WATCH_DICT[chat_id] = {'count': 0, 'running_count': 0, 'name': None, 'pic': None,'anime':None,'rarity':None, 'interval': 100}
     WATCH_DICT[chat_id]['count'] += 1
     if WATCH_DICT[chat_id]['count'] == WATCH_DICT[chat_id]['interval']:
         try:
