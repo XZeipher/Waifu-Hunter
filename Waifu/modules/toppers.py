@@ -9,17 +9,8 @@ async def ranking(client,message):
     temp = await message.reply_text("**fetching simps....**")
     chat_id = message.chat.id
     data = await grpharem(chat_id)
-    picture_count = {}
-    for user_data_list in data:
-        for item in user_data_list:
-            user_id = item[1]
-            if user_id in picture_count:
-                picture_count[user_id] += 1
-            else:
-                picture_count[user_id] = 1
-    sorted_users = sorted(picture_count.items(), key=lambda x: x[1], reverse=True)[:10]
     text = "⛩️♪ • Leaderboard • ♪⛩️\n\n"
-    for index, (user_id, count) in enumerate(sorted_users, start=1):
+    for index, (user_id, count) in enumerate(data, start=1):
         user = await client.get_users(int(user_id))
         text += f"{index}. {user.mention} • {count}\n"
     keyboard = [
