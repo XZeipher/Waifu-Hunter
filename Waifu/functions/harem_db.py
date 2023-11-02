@@ -21,4 +21,13 @@ async def grpharem(chat_id):
         result = cusr.fetchall()
         if result:
             alt.append(result)
-    return alt
+    picture_count = {}
+    for user_data_list in alt:
+        for item in user_data_list:
+            user_id = item[1]
+            if user_id in picture_count:
+                picture_count[user_id] += 1
+            else:
+                picture_count[user_id] = 1
+    sorted_users = sorted(picture_count.items(), key=lambda x: x[1], reverse=True)[:10]
+    return sorted_users
