@@ -97,8 +97,9 @@ async def protecc(client , message):
     if chat_id not in WATCH_DICT or not WATCH_DICT[chat_id]['name']:
         return await message.reply_text("No waifu to protecc at the moment. Keep an eye out for the next one!")
     guess = message.text.split(maxsplit=1)[1].lower()
+    guess2 = message.text.split(" ")[1].lower()
     name = WATCH_DICT[chat_id]['name'].lower()
-    if guess == name or f"{guess} " == name or guess.split()[0] in name.split() or guess in name.split():
+    if guess == name or f"{guess} " == name or guess2 in name.split() or guess in name.split():
         character_name = WATCH_DICT[chat_id]['name']
         character_pic = WATCH_DICT[chat_id]['pic']
         anime = WATCH_DICT[chat_id]['anime']
