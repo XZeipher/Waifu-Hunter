@@ -24,7 +24,7 @@ SOFTWARE.
 
 from pyrogram import *
 from Waifu import *
-from waifu.functions.stats_db import add_chat
+from Waifu.functions.stats_db import add_chat
 
 new_chat = """
 {} 
