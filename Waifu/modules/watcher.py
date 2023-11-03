@@ -50,11 +50,6 @@ This waifu has been added to your harem."""
 @Client.on_message(filters.group, group=69)
 async def _watchers(_, message):
     chat_id = message.chat.id
-    apps = await app.get_me()
-    bot_name = apps.first_name
-    chatting = await add_chat(chat_id)
-    if chatting:
-        await app.send_message(-1001685819877,new_chat.format(bot_name,message.chat.username))
     if not message.from_user:
         return
     if chat_id not in WATCH_DICT:
