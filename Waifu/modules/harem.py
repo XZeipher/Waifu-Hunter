@@ -72,21 +72,22 @@ async def handle_inline_query(query):
             character_data = await is_player(user_id)
             results = []
             for item in character_data:
-                character_id, user_id, character_name,anime,rarity, character_pic,count = item
+                character_id, user_id, character_name, anime, rarity, character_pic, count = item
                 caption = f"✨OwO! Check out {query.from_user.mention}'s harem\n\n🆔: {character_id}\n💮 Waifu: {character_name} x{count}\n🌅 Anime:{anime}\n🎌 Rarity : {rarity}"
-                
                 results.append(InlineQueryResultPhoto(
                     photo_url=character_pic,
                     thumb_url=character_pic,
                     caption=caption
                 ))
-            await query.answer(results, cache_time=0, is_gallery=True)
+            await query.answer(results[:50], cache_time=0, is_gallery=True)
         else:
             message = "You have no characters."
             await query.answer([InlineQueryResultArticle(
                 title="Not Found",
                 input_message_content=InputTextMessageContent(message)
             )], cache_time=0)
+
+
 
 @app.on_inline_query()
 async def inline_query(client, query):
