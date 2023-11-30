@@ -69,7 +69,10 @@ async def handle_inline_query(query):
     if query.query.startswith("user_data_inline."):
         user_id = query.query[17:]
         user = await is_player(user_id)
-        first = (await app.get_users(int(user_id))).first_name
+        try:
+            first = (await app.get_users(int(user_id))).first_name
+        except:
+            first = "User"
         if user:
             character_data = await is_player(user_id)
             results = []
@@ -93,28 +96,27 @@ async def handle_inline_query(query):
                 input_message_content=InputTextMessageContent(message)
             )], cache_time=0)
     else:
-        try:
-            cursor.execute("SELECT * FROM character_db")
-            fetched = cursor.fetchall()
-            results = []
-            for rex in fetched:
-                name,anime,rarity,pic = rex
-                cap = "**OwO! Check out this qt waifu!\n\n**"
-                cap += f"**🌅 Anime :{anime}\n**"
-                cap += f"**💮 Name : {name}\n**"
-                cap += f"**🫧 Rarity : {rarity}\n**"
-                results.append(InlineQueryResultPhoto(
-                    photo_url=pic,
-                    thumb_url=pic,
-                    caption=cap
-                ))
-            total_results = len(results)
-            current_page = int(query.offset) if query.offset else 0
-            items_per_page = 50
-            next_offset = current_page + items_per_page if current_page + items_per_page < total_results else None
-            await query.answer(results[current_page:current_page+items_per_page], cache_time=0, is_gallery=True, next_offset=str(next_offset))
-        except Exception as r:
-            print(str(r))
+        cursor.execute("SELECT * FROM character_db")
+        fetched = cursor.fetchall()
+        results = []
+        for rex in fetched:
+            name,anime,rarity,pic = rex
+            cap = "**OwO! Check out this qt waifu!\n\n**"
+            cap += f"**🌅 Anime :{anime}\n**"
+            cap += f"**💮 Name : {name}\n**"
+            cap += f"**🫧 Rarity : {rarity}\n**"
+            results.append(InlineQueryResultPhoto(
+                photo_url=pic,
+                thumb_url=pic,
+                caption=cap
+            ))
+        total_results = len(results)
+        current_page = int(query.offset) if query.offset else 0
+        items_per_page = 50
+        next_offset = current_page + items_per_page if current_page + items_per_page < total_results else None
+        await query.answer(results[current_page:current_page+items_per_page], cache_time=0, is_gallery=True, next_offset=str(next_offset))
+    except Exception as r:
+        print(str(r))
             
 
 
