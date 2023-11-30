@@ -100,9 +100,9 @@ async def handle_inline_query(query):
         fetched = cursor.fetchall()
         results = []
         for rex in fetched:
-            name,anime,rarity,pic = rex
+            id,name,anime,rarity,pic = rex
             cap = "**OwO! Check out this qt waifu!\n\n**"
-            cap += f"**🌅 Anime :{anime}\n**"
+            cap += f"**🌅{anime}\n**"
             cap += f"**💮 Name : {name}\n**"
             cap += f"**🫧 Rarity : {rarity}\n**"
             results.append(InlineQueryResultPhoto(
