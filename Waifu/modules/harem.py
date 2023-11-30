@@ -115,8 +115,7 @@ async def handle_inline_query(query):
         items_per_page = 50
         next_offset = current_page + items_per_page if current_page + items_per_page < total_results else None
         await query.answer(results[current_page:current_page+items_per_page], cache_time=0, is_gallery=True, next_offset=str(next_offset))
-    except Exception as r:
-        print(str(r))
+    
             
 
 
