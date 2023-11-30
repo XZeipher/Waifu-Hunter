@@ -74,7 +74,7 @@ async def handle_inline_query(query):
             results = []
             for item in character_data:
                 character_id, user_id, character_name, anime, rarity, character_pic, count = item
-                caption = f"✨OwO! Check out {query.from_user.mention}'s harem\n\n🆔: {character_id}\n💮 Waifu: {character_name} x{count}\n🌅 Anime:{anime}\n🎌 Rarity : {rarity}"
+                caption = f"✨OwO! Check out {(await app.get_users(int(user_id))).first_name}'s harem\n\n🆔: {character_id}\n💮 Waifu: {character_name} x{count}\n🌅 Anime:{anime}\n🎌 Rarity : {rarity}"
                 results.append(InlineQueryResultPhoto(
                     photo_url=character_pic,
                     thumb_url=character_pic,
