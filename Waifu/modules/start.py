@@ -40,11 +40,11 @@ async def start(client,message):
     user_id = message.from_user.id
     BUTT = [
         [
-            InlineKeyboardButton("Primes ⚕️", url="https://t.me/PrimesDivision"),
-            InlineKeyboardButton("Support 🆘", url="https://t.me/PrimesSupport"),
+            InlineKeyboardButton("Updates ⚕️", url="https://t.me/WaifuHunterUpdates"),
+            InlineKeyboardButton("Support 🆘", url="https://t.me/WaifuHunterSupport"),
         ],
         [
-            InlineKeyboardButton("➕ Add Me To Your Group ➕", url="http://t.me/WaifuHunterXBot?startgroup=true"),
+            InlineKeyboardButton("➕ Add Me To Your Group ➕", url="http://t.me/WaifuHunterXBot?startgroup=True"),
         ],
     ]
     bot = await app.get_me()
@@ -56,7 +56,7 @@ async def start(client,message):
     else:
         user = await add_user(user_id)
         if user:
-            await app.send_message(-1001685819877,new_user.format(name,message.from_user.mention))
+            await app.send_message(-1002103089465,new_user.format(name,message.from_user.mention))
         TEXT = f"Hey {message.from_user.mention}, I know you can't wait to be with your favourite waifus but I only function in a group , so add me there and watch the magic."
     return await message.reply_photo(photo="https://graph.org//file/e6143909bef2d121d6407.png",caption=TEXT,reply_markup=InlineKeyboardMarkup(BUTT))
     
