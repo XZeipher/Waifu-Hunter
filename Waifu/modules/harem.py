@@ -64,6 +64,7 @@ async def harem(client, message):
     user_data.pop(user_id)
 
 
+
 async def handle_inline_query(query):
     if query.query.startswith("user_data_inline."):
         user_id = query.query[17:]
@@ -81,15 +82,17 @@ async def handle_inline_query(query):
                 ))
             total_results = len(results)
             current_page = int(query.offset) if query.offset else 0
-            next_offset = current_page + 1 if current_page + 1 < total_results else None
+            items_per_page = 10
+            next_offset = current_page + items_per_page if current_page + items_per_page < total_results else None
 
-            await query.answer(results[current_page:current_page+1], cache_time=0, is_gallery=True, next_offset=str(next_offset))
+            await query.answer(results[current_page:current_page+items_per_page], cache_time=0, is_gallery=True, next_offset=str(next_offset))
         else:
             message = "You have no characters."
             await query.answer([InlineQueryResultArticle(
                 title="Not Found",
                 input_message_content=InputTextMessageContent(message)
             )], cache_time=0)
+
 
 
 
