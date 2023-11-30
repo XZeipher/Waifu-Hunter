@@ -79,13 +79,19 @@ async def handle_inline_query(query):
                     thumb_url=character_pic,
                     caption=caption
                 ))
-            await query.answer(results[:50], cache_time=0, is_gallery=True)
+            total_results = len(results)
+            current_page = int(query.offset) if query.offset else 0
+            next_offset = current_page + 1 if current_page + 1 < total_results else None
+
+            await query.answer(results[current_page:current_page+1], cache_time=0, is_gallery=True, next_offset=str(next_offset))
         else:
             message = "You have no characters."
             await query.answer([InlineQueryResultArticle(
                 title="Not Found",
                 input_message_content=InputTextMessageContent(message)
             )], cache_time=0)
+
+
 
 
 
