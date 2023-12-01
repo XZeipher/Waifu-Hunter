@@ -43,7 +43,7 @@ async def event_handler(client,query):
             ])
         return await query.edit_message_media(media=InputMediaPhoto("https://i.imgur.com/TA6cyP5.jpeg", caption=text),reply_markup=BUTT)
 
-@app.on_callback_query(filters.regex(r"^(on_winter|off_winter)$")
+@app.on_callback_query(filters.regex(r"^(on_winter|off_winter)$"))
 async def winter_call(client,query):
     data = query.data
     if query.from_user.id != query.message.reply_to_message.from_user.id:
