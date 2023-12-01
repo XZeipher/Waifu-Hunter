@@ -21,3 +21,24 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+
+from Waifu import cursor,DATABASE,cusr,DB
+
+cusr.execute("""
+    CREATE TABLE IF NOT EXISTS winter_event (
+        id SERIAL PRIMARY KEY,
+        data TEXT NOT NULL
+    )
+""")
+DB.commit()
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS winter_characters (
+        id SERIAL PRIMARY KEY,
+        name TEXT NOT NULL,
+        anime TEXT NOT NULL,
+        rarity TEXT NOT NULL,
+        pic TEXT NOT NULL
+    )
+""")
+DATABASE.commit()
+
