@@ -32,7 +32,7 @@ from pyrogram.types import *
 WATCH_DICT = {}
 pop_text = """**A Waifu has popped out from nowhere!
 Bring her to your bed by sending**
-/protecc name"""
+/hunt name"""
 
 new_chat = """
 {} 
@@ -85,7 +85,7 @@ async def _watchers(_, message):
             except errors.FloodWait as e:
                 await asyncio.sleep(e.value)
 
-@app.on_message(filters.command("protecc") & filters.group)
+@app.on_message(filters.command("hunt") & filters.group)
 async def protecc(client , message):
     chat_id = message.chat.id
     user_id = message.from_user.id
