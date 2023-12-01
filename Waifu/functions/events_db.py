@@ -42,3 +42,11 @@ cursor.execute("""
 """)
 DATABASE.commit()
 
+async def winter_check():
+    cusr.execute("SELECT * FROM winter_event WHERE data = %s",("True",))
+    results = cusr.fetchone()
+    if not results:
+        return False
+    return True
+
+
