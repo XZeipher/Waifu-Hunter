@@ -48,5 +48,12 @@ async def winter_check():
     if not results:
         return False
     return True
-
+async def winter_on():
+    cusr.execute("INSERT INTO winter_event (data) VALUES (%s)",("True",))
+    DB.commit()
+    return True
+async def winter_off():
+    cusr.execute("DELETE FROM winter_event WHERE data = %s",("True",))
+    DB.commit()
+    return True
 
