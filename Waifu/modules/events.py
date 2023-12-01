@@ -1,5 +1,6 @@
 from pyrogram import Client,filters
-from pyrogram.types import InlineKeyboardButton,InlineKeyboardMarkup
+from pyrogram.types import *
+from pyrogram.enums import *
 from Waifu import *
 from Waifu.functions.events_db import winter_check
 
