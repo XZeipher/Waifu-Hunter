@@ -67,3 +67,21 @@ async def adder(client , message):
     cursor.execute("INSERT INTO character_db (name , anime , rarity , pic) VALUES (%s , %s , %s , %s)",(name,anime,rarity,link,))
     DATABASE.commit()
     return await message.reply_photo(link,caption=f"✨ Added Character in Database.\nName : {name}\nAnime : {anime}\nRarity : {rarity}")
+
+@Client.on_message(filters.command("winter") & filters.user(6761575762))
+async def adder_winter(client , message):
+    replied = message.reply_to_message
+    if not replied.photo:
+        return await message.reply_text("reply to a image")
+    if not replied.caption:
+        return await message.reply_text("image has no name in caption")
+    down = await replied.download()
+    pic = upload_file(down)
+    link = f"https://graph.org{pic[0]}"
+    cap = replied.caption.split("+")
+    name = cap[0].title()
+    anime = cap[1].title()
+    rarity = "🔮 Limited-Time"
+    cursor.execute("INSERT INTO winter_characters (name , anime , rarity , pic) VALUES (%s , %s , %s , %s)",(name,anime,rarity,link,))
+    DATABASE.commit()
+    return await message.reply_photo(link,caption=f"✨ Added Character in Database.\nName : {name}\nAnime :{anime}\nRarity : {rarity}")
