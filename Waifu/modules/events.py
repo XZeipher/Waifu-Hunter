@@ -2,7 +2,7 @@ from pyrogram import Client,filters
 from pyrogram.types import *
 from pyrogram.enums import *
 from Waifu import *
-from Waifu.functions.events_db import winter_check
+from Waifu.functions.events_db import *
 
 text = """
 𝗛𝗲𝗹𝗹𝗼 𝗦𝘄𝗲𝗲𝘁𝗶𝗲,
@@ -42,3 +42,28 @@ async def event_handler(client,query):
                 ],
             ])
         return await query.edit_message_media(media=InputMediaPhoto("https://i.imgur.com/TA6cyP5.jpeg", caption=text),reply_markup=BUTT)
+
+@app.on_callback_query(filters.regex(r"^(on_winter|off_winter)$")
+async def winter_call(client,query):
+    data = query.data
+    if query.from_user.id != query.message.reply_to_message.from_user.id:
+        return await query.answer("Sorry you can't use this button.")
+    if data == "on_winter":
+        BUTT = InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton("Turn Off", callback_data="off_winter"),
+            ],
+        ])
+        await winter_on()
+        await query.answer("Turned on Winter Fest.",show_alert=True)
+        return await query.edit_message_reply_markup(BUTT)
+    elif data == "off_winter":
+        BUTT = InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton("Turn On", callback_data="on_winter"),
+            ],
+        ])
+        await winter_off()
+        await query.answer("Turned off Winter Fest.",show_alert=True)
+        return await query.edit_message_reply_markup(BUTT)
+        
