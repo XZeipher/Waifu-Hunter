@@ -30,7 +30,7 @@ from pyrogram import *
 from pyrogram.types import *
 
 WATCH_DICT = {}
-pop_text = """**A Waifu has popped out from nowhere!
+pop_text = """**{} Waifu has popped out from nowhere!
 Bring her to your bed by sending**
 /hunt name"""
 
@@ -43,7 +43,7 @@ CHAT : {}
 lost_text = """rip, the waifu has run away already...
 His/Her name is **{}**, remember it next time!"""
 
-catch_text = """✔️ OwO you caught **{}**.
+catch_text = """✔️ OwO you caught a {} waifu **{}**.
 This waifu has been added to your harem."""
 
 
@@ -67,7 +67,8 @@ async def _watchers(_, message):
         except:
             return
         try:
-            msg = await _.send_photo(chat_id, photo=pic, caption=pop_text)
+            rrr = rarity.split(maxsplit=1)[0]
+            msg = await _.send_photo(chat_id, photo=pic, caption=pop_text.format(rrr))
             WATCH_DICT[chat_id]['name'] = name
             WATCH_DICT[chat_id]['pic'] = pic
             WATCH_DICT[chat_id]['anime'] = anime
@@ -94,7 +95,7 @@ async def protecc(client , message):
     guess = message.text.split(maxsplit=1)[1].lower()
     guess2 = message.text.split(" ")[1].lower()
     name = WATCH_DICT[chat_id]['name'].lower()
-    if guess == name or f"{guess} " == name or guess2 in name.split() or guess in name.split():
+    if guess == name or guess2 in name.split() or guess in name:
         character_name = WATCH_DICT[chat_id]['name']
         character_pic = WATCH_DICT[chat_id]['pic']
         anime = WATCH_DICT[chat_id]['anime']
@@ -102,9 +103,9 @@ async def protecc(client , message):
         updated = await updaters(user_id, character_pic)
         if updated:
             WATCH_DICT.pop(chat_id)
-            return await message.reply_text(catch_text.format(character_name))
+            return await message.reply_text(catch_text.format(rarity,character_name))
         await insert(user_id, character_name, anime,rarity,character_pic,"0")
         WATCH_DICT.pop(chat_id)
-        return await message.reply_text(catch_text.format(character_name))
+        return await message.reply_text(catch_text.format(rarity,character_name))
     else:
         return await message.reply_text("❌ Rip, that's not quite right.")
