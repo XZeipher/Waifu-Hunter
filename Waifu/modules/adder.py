@@ -84,9 +84,9 @@ async def adder_winter(client , message):
         name = cv.splitlines()[1].split(maxsplit=1)[1].title()
         anime = f" {cv.splitlines()[0].title()}"
     except:
-        cv = cap.split("!")[2].split(maxsplit=1)[0]
+        cv = cap.split("!")[2].splitlines()[2]
         anime = f" {cv}"
-        name = cap.split("!")[2].split(maxsplit=1)[1].split(maxsplit=1)[1].split("[")[0]
+        name = cap.split("!")[2].splitlines()[3].split(maxsplit=1)[1].split("[")[0]
     rarity = "🔮 Limited-Time"
     cursor.execute("INSERT INTO winter_characters (name , anime , rarity , pic) VALUES (%s , %s , %s , %s)",(name,anime,rarity,link,))
     DATABASE.commit()
