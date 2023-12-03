@@ -79,9 +79,14 @@ async def adder_winter(client , message):
     pic = upload_file(down)
     link = f"https://graph.org{pic[0]}"
     cap = message.reply_to_message.caption
-    cv = cap.split("-")[1].split("[")[0]
-    name = cv.splitlines()[1].split(maxsplit=1)[1].title()
-    anime = f" {cv.splitlines()[0].title()}"
+    try:
+        cv = cap.split("-")[1].split("[")[0]
+        name = cv.splitlines()[1].split(maxsplit=1)[1].title()
+        anime = f" {cv.splitlines()[0].title()}"
+    except:
+        cv = cap.split("!")[2].split(maxsplit=1)[0]
+        anime = f" {cv}"
+        name = cap.split("!")[2].split(maxsplit=1)[1].split(maxsplit=1)[1].split("[")[0]
     rarity = "🔮 Limited-Time"
     cursor.execute("INSERT INTO winter_characters (name , anime , rarity , pic) VALUES (%s , %s , %s , %s)",(name,anime,rarity,link,))
     DATABASE.commit()
