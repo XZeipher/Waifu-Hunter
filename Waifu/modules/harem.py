@@ -95,7 +95,7 @@ async def handle_inline_query(query):
                 title="Not Found",
                 input_message_content=InputTextMessageContent(message)
             )], cache_time=0)
-    elif query.query.startswith("chri"):
+    elif query.query.lower().startswith("chri"):
         cursor.execute("SELECT * FROM winter_characters")
         fetched = cursor.fetchall()
         results = []
