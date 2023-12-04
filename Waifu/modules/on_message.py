@@ -32,9 +32,10 @@ new_chat = """
 CHAT : {}
 """
 
-@Client.on_message(filters.group,group=66)
+@Client.on_message(filters.new_chat_members)
 async def new_mem(_,message):
-    id = message.from_user.id
+    for member in message.new_chat_members:
+        id = member.id
     apps = await app.get_me()
     bot_id = apps.id
     bot_name = apps.first_name
