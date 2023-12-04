@@ -32,15 +32,11 @@ new_chat = """
 CHAT : {}
 """
 
-@Client.on_message(filters.group,group=99)
+@Client.on_message(filters.me & filters.group,group=66)
 async def new_mem(_,message):
     chat_id = message.chat.id
-    id = message.from_user.id
-    bot_id = 6962219103
     bot_name = "Waifu • Hunter 変態"
-    if int(bot_id) == int(id):
-        chatting = await add_chat(chat_id)
-        if chatting:
-            return await app.send_message(-1002103089465,new_chat.format(bot_name,message.chat.username))
-        return
+    chatting = await add_chat(chat_id)
+    if chatting:
+        return await app.send_message(-1002103089465,new_chat.format(bot_name,message.chat.username))
     return
