@@ -34,6 +34,7 @@ CHAT : {}
 
 @Client.on_message(filters.new_chat_members)
 async def new_mem(_,message):
+    chat_id = message.chat.id
     for member in message.new_chat_members:
         id = member.id
     apps = await app.get_me()
@@ -42,6 +43,6 @@ async def new_mem(_,message):
     if int(bot_id) == int(id):
         chatting = await add_chat(chat_id)
         if chatting:
-            return await app.send_message(-1001685819877,new_chat.format(bot_name,message.chat.username))
+            return await app.send_message(-1002103089465,new_chat.format(bot_name,message.chat.username))
         return
     return
