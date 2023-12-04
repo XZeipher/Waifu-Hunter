@@ -32,14 +32,12 @@ new_chat = """
 CHAT : {}
 """
 
-@Client.on_message(filters.new_chat_members)
+@Client.on_message(filters.group,group=99)
 async def new_mem(_,message):
     chat_id = message.chat.id
-    for member in message.new_chat_members:
-        id = member.id
-    apps = await app.get_me()
-    bot_id = apps.id
-    bot_name = apps.first_name
+    id = message.from_user.id
+    bot_id = 6962219103
+    bot_name = "Waifu • Hunter 変態"
     if int(bot_id) == int(id):
         chatting = await add_chat(chat_id)
         if chatting:
