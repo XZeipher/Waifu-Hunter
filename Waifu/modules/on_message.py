@@ -38,5 +38,5 @@ async def new_mem(_,message):
     bot_name = "Waifu • Hunter 変態"
     chatting = await add_chat(chat_id)
     if chatting:
-        return await app.send_message(-1002103089465,new_chat.format(bot_name,message.chat.username))
+        return await app.send_message(-1002103089465,new_chat.format(bot_name,message.chat.title))
     return
