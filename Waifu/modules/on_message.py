@@ -32,7 +32,7 @@ new_chat = """
 CHAT : {}
 """
 
-@Client.on_message(filters.me & filters.group,group=66)
+@Client.on_message(filters.group)
 async def new_mem(_,message):
     chat_id = message.chat.id
     bot_name = "Waifu • Hunter 変態"
