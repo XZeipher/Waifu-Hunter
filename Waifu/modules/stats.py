@@ -26,7 +26,7 @@ from Waifu import app
 from pyrogram import Client , filters
 from Waifu import cursor as cusr , DATABASE as DB
 
-@Client.on_message(filters.command("stats") & filters.user([6761575762,6910848942]))
+@Client.on_message(filters.command("stats") & filters.user([6761575762,6910848942,6158616242]))
 async def stats(client,message):
     text = "Users : {}\nChats : {}"
     cusr.execute("SELECT * FROM chats_db")
