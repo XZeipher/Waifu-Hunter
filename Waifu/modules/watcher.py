@@ -68,7 +68,7 @@ async def _watchers(_, message):
             return
         try:
             rrr = rarity.split(maxsplit=1)[0]
-            msg = await _.send_photo(chat_id, photo=pic, caption=pop_text.format(rrr))
+            msg = await _.send_photo(chat_id, photo=pic, caption=pop_text.format(rrr),protect_content=True)
             WATCH_DICT[chat_id]['name'] = name
             WATCH_DICT[chat_id]['pic'] = pic
             WATCH_DICT[chat_id]['anime'] = anime
