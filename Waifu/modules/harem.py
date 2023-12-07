@@ -123,14 +123,15 @@ async def handle_inline_query(query):
         results = []
         for rex in fetched:
             id,name,anime,rarity,pic = rex
+            BUTT = InlineKeyboardMarkup([[InlineKeyboardButton(text="❓ Who is this waifu ❓",callback_data=f"wdata.{name}.{query.from_user.id}"),]])
             cap = "**OwO! Check out this qt waifu!\n\n**"
             cap += f"**🌅{anime}\n**"
-            cap += f"**💮 Name : {name}\n**"
             cap += f"**🫧 Rarity : {rarity}\n**"
             results.append(InlineQueryResultPhoto(
                 photo_url=pic,
                 thumb_url=pic,
-                caption=cap
+                caption=cap,
+                reply_markup=BUTT
             ))
         total_results = len(results)
         current_page = int(query.offset) if query.offset else 0
