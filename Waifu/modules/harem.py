@@ -153,8 +153,7 @@ async def caller_data(client,query):
     name = results[1]
     anime = results[2]
     rarity = results[3]
-    text = f"""
-    🎆 Anime:{anime}
+    text = f"""🎆 Anime:{anime}
     💮 Name : {name}
     🫧 Rarity : {rarity}"""
     return await query.answer(text,show_alert=True)
