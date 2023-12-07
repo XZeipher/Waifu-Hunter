@@ -40,7 +40,7 @@ async def start(client,message):
     user_id = message.from_user.id
     BUTT = [
         [
-            InlineKeyboardButton("Updates ⚕️", url="https://t.me/WaifuHunterUpdates"),
+            InlineKeyboardButton("Updates ⚕️", url="https://t.me/WaifuHunterCommunity"),
             InlineKeyboardButton("Support 🆘", url="https://t.me/WaifuHunterSupport"),
         ],
         [
