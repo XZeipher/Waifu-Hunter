@@ -37,4 +37,4 @@ async def draw_lucky(client,message):
             await app.send_message(int(user[0]),f"Congratulations 👏🎉\nYou have won The Lucky draw\nYou received {name} in your harem.")
         except:
             win += f"• {user[0]} - Falied\n"
-    return msg.edit_text(win)
+    return await msg.edit_text(win)
