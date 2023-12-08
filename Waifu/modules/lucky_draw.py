@@ -29,5 +29,12 @@ async def draw_lucky(client,message):
     cursor.execute("SELECT user_id FROM users_db")
     result = cursor.fetchall()
     sorted_users = random.sample(result,number_of_winners)
+    win ="**Winners 🏆**\n\n*"
     for user in sorted_users:
-        pass
+        try:
+            await insert(str(user[0]),name,anime,rarity,link,"0")
+            win += f"• {(await app.get_users(int(user[0]))).mention} - Passed\n"
+            await app.send_message(int(user[0]),f"Congratulations 👏🎉\nYou have won The Lucky draw\nYou received {name} in your harem.")
+        except:
+            win += f"• {user[0]} - Falied\n"
+    return msg.edit_text(win)
