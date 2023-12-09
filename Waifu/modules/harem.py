@@ -160,7 +160,7 @@ async def owns_data(client,query):
     num = 0
     for r in resp:
         try:
-            first = (await app.get_users(r[0])).first_name
+            first = (await app.get_users(int(r[0]))).first_name
             num += 1
             txt += f"{num}. {first}\n"
         except:
