@@ -123,7 +123,7 @@ async def handle_inline_query(query):
         results = []
         for rex in fetched:
             id,name,anime,rarity,pic = rex
-            BUTT = InlineKeyboardMarkup([[InlineKeyboardButton(text="❓ Who is this waifu ❓",callback_data=f"wdata.{id}.{query.from_user.id}"),]])
+            BUTT = InlineKeyboardMarkup([[InlineKeyboardButton(text="❓ Who is this waifu ❓",callback_data=f"wdata.{id}.{query.from_user.id}"),],[InlineKeyboardButton(text="❓ Who owns her ❓",callback_data=f"owns.{id}.{query.from_user.id}"),]])
             cap = "**OwO! Check out this qt waifu!\n\n**"
             cap += f"**🌅{anime}\n**"
             cap += f"**🫧 Rarity : {rarity}\n**"
