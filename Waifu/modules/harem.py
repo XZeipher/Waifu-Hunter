@@ -139,7 +139,34 @@ async def handle_inline_query(query):
         next_offset = current_page + items_per_page if current_page + items_per_page < total_results else None
         await query.answer(results[current_page:current_page+items_per_page], cache_time=0, is_gallery=True, next_offset=str(next_offset))
     
-            
+@app.on_callback_query(filters.regex(r"^owns."))
+async def owns_data(client,query):
+    data = query.data
+    id = data.split(".")[1]
+    user_id = data.split(".")[2]
+    if query.from_user.id != int(user_id):
+        return await query.answer("You can't use others inline.",show_alert=True)
+    cursor.execute("SELECT * FROM character_db WHERE id = %s",(id,))
+    results = cursor.fetchone()
+    name = results[1]
+    anime = results[2]
+    rarity = results[3]
+    pic = results[4]
+    cusr.execute("SELECT user_id FROM user_data WHERE pic = %s",(pic,))
+    resp = cusr.fetchall()
+    if not resp:
+        return await query.answer("No one has hunted this waifu yet!",show_alert=True)
+    txt = ""
+    num = 0
+    for r in resp:
+        try:
+            first = (await app.get_users(r[0])).first_name
+            num += 1
+            txt += f"{num}. {first}\n"
+        except:
+            continue
+    return await query.answer(txt,show_alert=True)
+        
 
 @app.on_callback_query(filters.regex(r"^wdata."))
 async def caller_data(client,query):
