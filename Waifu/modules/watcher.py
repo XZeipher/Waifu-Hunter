@@ -57,7 +57,6 @@ async def randomized_choice():
 
 @Client.on_message(filters.group, group=69)
 async def _watchers(_, message):
-    global event
     chat_id = message.chat.id
     if not message.from_user:
         return
