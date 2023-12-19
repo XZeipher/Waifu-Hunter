@@ -47,7 +47,6 @@ His/Her name is **{}**, remember it next time!"""
 catch_text = """✔️ OwO you caught a {} waifu **{}**.
 This waifu has been added to your harem."""
 
-event = await winter_check()
 
 async def randomized_choice():
     choices = ["winter", "normal"]
