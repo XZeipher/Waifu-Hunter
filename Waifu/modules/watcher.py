@@ -26,6 +26,7 @@ import json , httpx , psycopg2 , requests , asyncio , random , time
 from Waifu import *
 from Waifu.functions.watch_db import insert,updaters,delete
 from Waifu.functions.stats_db import add_chat
+from Waifu.functions.events_db import winter_check
 from pyrogram import *
 from pyrogram.types import *
 
@@ -46,9 +47,18 @@ His/Her name is **{}**, remember it next time!"""
 catch_text = """✔️ OwO you caught a {} waifu **{}**.
 This waifu has been added to your harem."""
 
+event = await winter_check()
+
+async def randomized_choice():
+    choices = ["winter", "normal"]
+    probabilities = [0.3, 0.7]
+    result = random.choices(choices, weights=probabilities)[0]
+    return result
+
 
 @Client.on_message(filters.group, group=69)
 async def _watchers(_, message):
+    global event
     chat_id = message.chat.id
     if not message.from_user:
         return
@@ -56,16 +66,42 @@ async def _watchers(_, message):
         WATCH_DICT[chat_id] = {'count': 0, 'running_count': 0, 'name': None, 'pic': None,'anime':None,'rarity':None, 'interval': 100}
     WATCH_DICT[chat_id]['count'] += 1
     if WATCH_DICT[chat_id]['count'] == WATCH_DICT[chat_id]['interval']:
-        try:
-            cursor.execute("SELECT * FROM character_db")
-            result = cursor.fetchall()
-            data = random.choice(result)
-            name = data[1]
-            anime = data[2]
-            rarity = data[3]
-            pic = data[4]
-        except:
-            return
+        event = await winter_check()
+        if not event:
+            try:
+                cursor.execute("SELECT * FROM character_db")
+                result = cursor.fetchall()
+                data = random.choice(result)
+                name = data[1]
+                anime = data[2]
+                rarity = data[3]
+                pic = data[4]
+            except:
+                return
+        else:
+            toss_event = await randomized_choice()
+            if toss_event == "winter":
+                try:
+                    cursor.execute("SELECT * FROM winter_characters")
+                    result = cursor.fetchall()
+                    data = random.choice(result)
+                    name = data[1]
+                    anime = data[2]
+                    rarity = data[3]
+                    pic = data[4]
+                except:
+                    return
+            else:
+                try:
+                    cursor.execute("SELECT * FROM character_db")
+                    result = cursor.fetchall()
+                    data = random.choice(result)
+                    name = data[1]
+                    anime = data[2]
+                    rarity = data[3]
+                    pic = data[4]
+                except:
+                    return
         try:
             rrr = rarity.split(maxsplit=1)[0]
             msg = await _.send_photo(chat_id, photo=pic, caption=pop_text.format(rrr),protect_content=True)
