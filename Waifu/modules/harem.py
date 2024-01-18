@@ -42,7 +42,7 @@ async def harem(client, message):
     all_user_characters = await get_user_characters(user_id)
     if not all_user_characters:
         return await message.reply_text("Sorry darling you haven't hunted any waifu 👀✨")
-    result = await characters(str(user_id), page=1, characters_per_page=10)
+    result = await characters(str(user_id), page=1, characters_per_page=5)
     
     harem_text = f"**👑 {message.from_user.mention}'s Harem (Page 1)\n\n**"
     for item in result:
