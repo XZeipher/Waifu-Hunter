@@ -177,7 +177,7 @@ async def page_inline(client, query):
     elif data == "prev_page" and current_page > 1:
         current_page -= 1
 
-    result = await characters(str(user_id), page=current_page, characters_per_page=10)
+    result = await characters(str(user_id), page=current_page, characters_per_page=5)
 
     if result:
         harem_text = f"**👑 {query.from_user.mention}'s Harem (Page {current_page})\n\n**"
