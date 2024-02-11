@@ -44,7 +44,7 @@ BLOCKED_USERS = set()
 BLOCK_DICT = {}
 flood_limit = 0
 app = Client(
-    "WaifuHunter",
+    "WaifuxpytHunter",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
@@ -60,6 +60,7 @@ async def init():
     global BOT_NAME,BOT_USERNAME,BOT_ID,BOT_MENTION
     LOGGER.info("Activating Bot Please Wait 🥺")
     await app.start()
+    await asyncio.sleep(1)
     apps = await app.get_me()
     BOT_ID = apps.id
     BOT_USERNAME = apps.username  

@@ -1,0 +1,244 @@
+2024-02-07 21:05:44,004 - pyrogram.session.auth - INFO - Start creating a new auth key on DC2
+2024-02-07 21:05:44,005 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:05:45,138 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2024-02-07 21:05:50,787 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2024-02-07 21:05:50,788 - pyrogram.connection.connection - INFO - Disconnected
+2024-02-07 21:05:50,999 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:05:51,976 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2024-02-07 21:05:51,987 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:05:55,679 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:05:55,680 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:05:55,680 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:05:55,680 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:05:55,710 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:05:56,367 - pyrogram.session.session - INFO - PingTask stopped
+2024-02-07 21:05:56,368 - pyrogram.session.session - INFO - NetworkTask stopped
+2024-02-07 21:05:56,368 - pyrogram.connection.connection - INFO - Disconnected
+2024-02-07 21:05:56,369 - pyrogram.session.session - INFO - Session stopped
+2024-02-07 21:05:56,506 - pyrogram.session.auth - INFO - Start creating a new auth key on DC5
+2024-02-07 21:05:56,507 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:05:56,887 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:06:00,133 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2024-02-07 21:06:00,136 - pyrogram.connection.connection - INFO - Disconnected
+2024-02-07 21:06:00,362 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:06:01,123 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:06:01,124 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:06:03,794 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:06:03,795 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:06:03,796 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:06:03,797 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:06:03,799 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:09:09,062 - pyrogram.session.auth - INFO - Start creating a new auth key on DC2
+2024-02-07 21:09:09,062 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:09:09,330 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2024-02-07 21:09:11,611 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2024-02-07 21:09:11,612 - pyrogram.connection.connection - INFO - Disconnected
+2024-02-07 21:09:11,811 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:09:12,198 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2024-02-07 21:09:12,206 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:09:13,847 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:09:13,850 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:09:13,852 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:09:13,854 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:09:13,937 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:09:14,269 - pyrogram.session.session - INFO - PingTask stopped
+2024-02-07 21:09:14,272 - pyrogram.session.session - INFO - NetworkTask stopped
+2024-02-07 21:09:14,295 - pyrogram.connection.connection - INFO - Disconnected
+2024-02-07 21:09:14,306 - pyrogram.session.session - INFO - Session stopped
+2024-02-07 21:09:14,440 - pyrogram.session.auth - INFO - Start creating a new auth key on DC5
+2024-02-07 21:09:14,441 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:09:14,874 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:09:16,845 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2024-02-07 21:09:16,846 - pyrogram.connection.connection - INFO - Disconnected
+2024-02-07 21:09:17,011 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:09:17,121 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:09:17,123 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:09:18,270 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:09:18,272 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:09:18,285 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:09:18,286 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:09:18,287 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:10:55,624 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:10:55,750 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:10:55,757 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:10:56,514 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:10:56,514 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:10:56,514 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:10:56,514 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:10:56,581 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:13:55,541 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:13:55,735 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:13:55,740 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:13:56,640 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:13:56,642 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:13:56,642 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:13:56,642 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:13:56,695 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:13:57,122 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("bcast") in group 0 from "Waifu.modules.broadcast"
+2024-02-07 21:13:57,128 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("deleting_waifu") in group 0 from "Waifu.modules.delete"
+2024-02-07 21:13:57,131 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("eval") in group 0 from "Waifu.modules.eval"
+2024-02-07 21:13:58,362 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("event_manager") in group 0 from "Waifu.modules.events"
+2024-02-07 21:13:58,366 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("reporting") in group 0 from "Waifu.modules.feedback"
+2024-02-07 21:13:58,368 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("_gban") in group 0 from "Waifu.modules.gban"
+2024-02-07 21:13:58,699 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("gifting") in group 0 from "Waifu.modules.gift"
+2024-02-07 21:13:58,714 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("harem") in group 0 from "Waifu.modules.harem"
+2024-02-07 21:17:40,574 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:17:40,703 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:17:40,709 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:17:41,342 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:17:41,343 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:17:41,343 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:17:41,343 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:17:41,397 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:17:41,851 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("bcast") in group 0 from "Waifu.modules.broadcast"
+2024-02-07 21:17:41,886 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("deleting_waifu") in group 0 from "Waifu.modules.delete"
+2024-02-07 21:17:41,905 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("eval") in group 0 from "Waifu.modules.eval"
+2024-02-07 21:17:42,956 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("event_manager") in group 0 from "Waifu.modules.events"
+2024-02-07 21:17:43,002 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("reporting") in group 0 from "Waifu.modules.feedback"
+2024-02-07 21:17:43,013 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("_gban") in group 0 from "Waifu.modules.gban"
+2024-02-07 21:17:43,454 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("gifting") in group 0 from "Waifu.modules.gift"
+2024-02-07 21:17:43,489 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("harem") in group 0 from "Waifu.modules.harem"
+2024-02-07 21:25:05,991 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:25:06,086 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:25:06,088 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:25:06,645 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:25:06,645 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:25:06,645 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:25:06,645 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:25:06,692 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:25:07,166 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("bcast") in group 0 from "Waifu.modules.broadcast"
+2024-02-07 21:25:07,170 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("deleting_waifu") in group 0 from "Waifu.modules.delete"
+2024-02-07 21:25:07,171 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("eval") in group 0 from "Waifu.modules.eval"
+2024-02-07 21:25:08,316 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("event_manager") in group 0 from "Waifu.modules.events"
+2024-02-07 21:25:08,327 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("reporting") in group 0 from "Waifu.modules.feedback"
+2024-02-07 21:25:08,332 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("_gban") in group 0 from "Waifu.modules.gban"
+2024-02-07 21:25:08,648 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("gifting") in group 0 from "Waifu.modules.gift"
+2024-02-07 21:25:08,653 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("harem") in group 0 from "Waifu.modules.harem"
+2024-02-07 21:34:26,203 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:34:26,549 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:34:26,556 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:34:28,542 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:34:28,545 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:34:28,547 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:34:28,548 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:34:28,605 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:34:29,608 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("bcast") in group 0 from "Waifu.modules.broadcast"
+2024-02-07 21:34:29,611 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("deleting_waifu") in group 0 from "Waifu.modules.delete"
+2024-02-07 21:34:29,613 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("eval") in group 0 from "Waifu.modules.eval"
+2024-02-07 21:34:30,670 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("event_manager") in group 0 from "Waifu.modules.events"
+2024-02-07 21:34:30,675 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("reporting") in group 0 from "Waifu.modules.feedback"
+2024-02-07 21:34:30,681 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("_gban") in group 0 from "Waifu.modules.gban"
+2024-02-07 21:34:31,011 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("gifting") in group 0 from "Waifu.modules.gift"
+2024-02-07 21:34:31,026 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("harem") in group 0 from "Waifu.modules.harem"
+2024-02-07 21:35:10,939 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:35:12,123 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:35:12,126 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:35:13,458 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:35:13,460 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:35:13,460 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:35:13,461 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:35:13,529 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:35:15,489 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("bcast") in group 0 from "Waifu.modules.broadcast"
+2024-02-07 21:35:15,494 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("deleting_waifu") in group 0 from "Waifu.modules.delete"
+2024-02-07 21:35:15,499 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("eval") in group 0 from "Waifu.modules.eval"
+2024-02-07 21:35:16,524 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("event_manager") in group 0 from "Waifu.modules.events"
+2024-02-07 21:35:16,530 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("reporting") in group 0 from "Waifu.modules.feedback"
+2024-02-07 21:35:16,535 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("_gban") in group 0 from "Waifu.modules.gban"
+2024-02-07 21:35:16,856 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("gifting") in group 0 from "Waifu.modules.gift"
+2024-02-07 21:35:16,858 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("harem") in group 0 from "Waifu.modules.harem"
+2024-02-07 21:36:38,216 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:36:38,434 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:36:38,437 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:36:39,378 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:36:39,382 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:36:39,383 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:36:39,384 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:36:39,438 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:36:39,956 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("bcast") in group 0 from "Waifu.modules.broadcast"
+2024-02-07 21:36:39,963 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("deleting_waifu") in group 0 from "Waifu.modules.delete"
+2024-02-07 21:36:39,971 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("eval") in group 0 from "Waifu.modules.eval"
+2024-02-07 21:36:40,997 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("event_manager") in group 0 from "Waifu.modules.events"
+2024-02-07 21:36:41,003 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("reporting") in group 0 from "Waifu.modules.feedback"
+2024-02-07 21:36:41,009 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("_gban") in group 0 from "Waifu.modules.gban"
+2024-02-07 21:36:41,321 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("gifting") in group 0 from "Waifu.modules.gift"
+2024-02-07 21:36:41,329 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("harem") in group 0 from "Waifu.modules.harem"
+2024-02-07 21:37:22,074 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-07 21:37:22,181 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-07 21:37:22,183 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-07 21:37:22,989 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-07 21:37:22,989 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-07 21:37:22,989 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-07 21:37:22,989 - pyrogram.session.session - INFO - Session started
+2024-02-07 21:37:23,076 - pyrogram.session.session - INFO - PingTask started
+2024-02-07 21:37:23,574 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("bcast") in group 0 from "Waifu.modules.broadcast"
+2024-02-07 21:37:23,586 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("deleting_waifu") in group 0 from "Waifu.modules.delete"
+2024-02-07 21:37:23,611 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("eval") in group 0 from "Waifu.modules.eval"
+2024-02-07 21:37:24,582 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("event_manager") in group 0 from "Waifu.modules.events"
+2024-02-07 21:37:24,589 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("reporting") in group 0 from "Waifu.modules.feedback"
+2024-02-07 21:37:24,595 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("_gban") in group 0 from "Waifu.modules.gban"
+2024-02-07 21:37:24,924 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("gifting") in group 0 from "Waifu.modules.gift"
+2024-02-07 21:37:24,933 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("harem") in group 0 from "Waifu.modules.harem"
+2024-02-08 09:44:34,047 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-08 09:44:34,280 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-08 09:44:34,289 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-08 09:44:35,310 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-08 09:44:35,313 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-08 09:44:35,315 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-08 09:44:35,317 - pyrogram.session.session - INFO - Session started
+2024-02-08 09:44:35,449 - pyrogram.session.session - INFO - PingTask started
+2024-02-08 09:44:35,970 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("bcast") in group 0 from "Waifu.modules.broadcast"
+2024-02-08 09:44:35,992 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("deleting_waifu") in group 0 from "Waifu.modules.delete"
+2024-02-08 09:44:35,997 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("eval") in group 0 from "Waifu.modules.eval"
+2024-02-08 09:44:37,203 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("event_manager") in group 0 from "Waifu.modules.events"
+2024-02-08 09:44:37,290 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("reporting") in group 0 from "Waifu.modules.feedback"
+2024-02-08 09:44:37,295 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("_gban") in group 0 from "Waifu.modules.gban"
+2024-02-08 09:44:37,713 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("gifting") in group 0 from "Waifu.modules.gift"
+2024-02-08 09:44:37,793 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("harem") in group 0 from "Waifu.modules.harem"
+2024-02-08 09:52:28,704 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-08 09:52:28,945 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-08 09:52:28,954 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-08 09:52:29,822 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-08 09:52:29,825 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-08 09:52:29,826 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-08 09:52:29,827 - pyrogram.session.session - INFO - Session started
+2024-02-08 09:52:29,928 - pyrogram.session.session - INFO - PingTask started
+2024-02-08 09:52:30,468 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("bcast") in group 0 from "Waifu.modules.broadcast"
+2024-02-08 09:52:30,504 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("deleting_waifu") in group 0 from "Waifu.modules.delete"
+2024-02-08 09:52:30,511 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("eval") in group 0 from "Waifu.modules.eval"
+2024-02-08 09:52:31,716 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("event_manager") in group 0 from "Waifu.modules.events"
+2024-02-08 09:52:31,726 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("reporting") in group 0 from "Waifu.modules.feedback"
+2024-02-08 09:52:31,736 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("_gban") in group 0 from "Waifu.modules.gban"
+2024-02-08 09:52:32,120 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("gifting") in group 0 from "Waifu.modules.gift"
+2024-02-08 09:52:32,145 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("harem") in group 0 from "Waifu.modules.harem"
+2024-02-08 10:18:56,478 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-08 10:18:56,614 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-08 10:18:56,620 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-08 10:18:57,345 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-08 10:18:57,347 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-08 10:18:57,348 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-08 10:18:57,349 - pyrogram.session.session - INFO - Session started
+2024-02-08 10:18:57,436 - pyrogram.session.session - INFO - PingTask started
+2024-02-08 10:18:57,924 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("bcast") in group 0 from "Waifu.modules.broadcast"
+2024-02-08 10:18:57,950 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("deleting_waifu") in group 0 from "Waifu.modules.delete"
+2024-02-08 10:18:57,972 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("eval") in group 0 from "Waifu.modules.eval"
+2024-02-08 10:18:59,089 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("event_manager") in group 0 from "Waifu.modules.events"
+2024-02-08 10:18:59,128 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("reporting") in group 0 from "Waifu.modules.feedback"
+2024-02-08 10:18:59,136 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("_gban") in group 0 from "Waifu.modules.gban"
+2024-02-08 10:18:59,585 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("gifting") in group 0 from "Waifu.modules.gift"
+2024-02-08 10:18:59,628 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("harem") in group 0 from "Waifu.modules.harem"
+2024-02-08 10:36:02,995 - pyrogram.connection.connection - INFO - Connecting...
+2024-02-08 10:36:03,128 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2024-02-08 10:36:03,135 - pyrogram.session.session - INFO - NetworkTask started
+2024-02-08 10:36:03,875 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2024-02-08 10:36:03,877 - pyrogram.session.session - INFO - Device: CPython 3.12.1 - Pyrogram 2.0.106
+2024-02-08 10:36:03,878 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2024-02-08 10:36:03,879 - pyrogram.session.session - INFO - Session started
+2024-02-08 10:36:03,977 - pyrogram.session.session - INFO - PingTask started
+2024-02-08 10:36:04,392 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("bcast") in group 0 from "Waifu.modules.broadcast"
+2024-02-08 10:36:04,394 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("deleting_waifu") in group 0 from "Waifu.modules.delete"
+2024-02-08 10:36:04,395 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("eval") in group 0 from "Waifu.modules.eval"
+2024-02-08 10:36:05,636 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("event_manager") in group 0 from "Waifu.modules.events"
+2024-02-08 10:36:05,646 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("reporting") in group 0 from "Waifu.modules.feedback"
+2024-02-08 10:36:05,655 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("_gban") in group 0 from "Waifu.modules.gban"
+2024-02-08 10:36:06,015 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("gifting") in group 0 from "Waifu.modules.gift"
+2024-02-08 10:36:06,027 - pyrogram.client - INFO - [WaifuxpytHunter] [LOAD] MessageHandler("harem") in group 0 from "Waifu.modules.harem"

@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-
+'''
 from Waifu import *
 from pyrogram import *
 from telegraph import Telegraph , upload_file
@@ -38,7 +38,7 @@ cursor.execute("""
 """)
 DATABASE.commit()
 telegraph = Telegraph()
-new_user = telegraph.create_account(short_name="WaifuBot")
+new_user = telegraph.create_account(short_name="WaifuxBot")
 auth_url = new_user["auth_url"]
 
 @Client.on_message(filters.command("upload") & filters.user(OWNER_ID))
@@ -85,3 +85,4 @@ async def adder_winter(client , message):
     cursor.execute("INSERT INTO winter_characters (name , anime , rarity , pic) VALUES (%s , %s , %s , %s)",(name,anime,rarity,link,))
     DATABASE.commit()
     return await message.reply_photo(link,caption=f"✨ Added Character in Database.\nName : {name}\nAnime :{anime}\nRarity : {rarity}")
+'''
