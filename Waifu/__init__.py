@@ -25,8 +25,8 @@ SOFTWARE.
 import time
 import logging
 import asyncio
+import psycopg2
 from config import *
-from database import *
 from pyrogram import Client
 import pytz
 
@@ -57,17 +57,30 @@ BOT_NAME = ""
 BOT_MENTION = ""
 cursor = None
 cusr = None
+DB = None
+DATABASE = None
 
 async def init():
-    global BOT_NAME,BOT_USERNAME,BOT_ID,BOT_MENTION,cursor,cusr
+    global BOT_NAME,BOT_USERNAME,BOT_ID,BOT_MENTION,cursor,cusr,DB,DATABASE
     LOGGER.info("Activating Bot Please Wait 🥺")
+    DB = await psycopg2.connect(host='otto.db.elephantsql.com',
+            port='5432',
+            user='xvoyijqi',
+            password='46CquJaKr7qFwJv_GpBB8s7n0HCfi1HG',
+            database='xvoyijqi'
+        )
+    DATABASE = await psycopg2.connect(host='otto.db.elephantsql.com',
+            port='5432',
+            user='sszitcfg',
+            password='0hUnKVnPcZmBIHj3iKA0AHRiddW4lTGt',
+            database='sszitcfg'
+        )
     await cursor = DATABASE.cursor()
     await DATABASE.rollback()
     await DATABASE.autocommit = True
     await cusr = DB.cursor()
     await DB.rollback()
     await DB.autocommit = True
-    await app.start()
     await asyncio.sleep(1)
     apps = await app.get_me()
     BOT_ID = apps.id
@@ -75,5 +88,6 @@ async def init():
     BOT_NAME = apps.first_name
     MENTION_BOT = apps.mention
     LOGGER.info("Activated 🥰")
+    await app.start()
     
 loop.run_until_complete(init()) 
