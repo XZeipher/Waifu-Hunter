@@ -45,11 +45,14 @@ PROCESS = {}
 @Client.on_message(filters.command("upload") & filters.private & filters.user(AUTH_USERS))
 async def adder(client , message):
     user_id = message.from_user.id
-    if user_id not in PROCESS:
-        PROCESS[user_id] = {'link': None,'rarity': None,'name': None,'anime': None}
-        return await message.reply_text("**Send me the image you want to upload.**")
-    else:
-        return await message.reply_text("**Finish your previous uploading.**")
+    try:
+        if user_id not in PROCESS:
+            PROCESS[user_id] = {'link': None,'rarity': None,'name': None,'anime': None}
+            return await message.reply_text("**Send me the image you want to upload.**")
+        else:
+            return await message.reply_text("**Finish your previous uploading.**")
+    except Exception as e:
+        return await message.reply_text(str(e))
     '''
     replied = message.reply_to_message
     if not replied.photo:
