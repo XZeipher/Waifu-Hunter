@@ -7,3 +7,4 @@ pytz
 asyncio
 beautifulsoup4
 telegraph
+tgcrypto
