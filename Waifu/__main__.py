@@ -39,7 +39,11 @@ loop = asyncio.get_event_loop()
 async def execute():       
     LOGGER.info("wait onni-chan i am starting 🥺✨")
     try:
-        await app.send_message(LOG_ID ,"I am started 🥺✨")
+        alive_text = """
+        🌟🤖 𝗦𝗬𝗦𝗧𝗘𝗠 𝗦𝗧𝗔𝗥𝗧𝗘𝗗 🤖🌟
+----------------------------------
+𝗧𝗵𝗲 𝗯𝗼𝘁 𝗵𝗮𝘀 𝘀𝘁𝗮𝗿𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆. 𝗟𝗲𝘁 𝘁𝗵𝗲 𝘄𝗮𝗶𝗳𝘂 𝗵𝘂𝗻𝘁𝗶𝗻𝗴 𝗯𝗲𝗴𝗶𝗻!"""
+        await app.send_photo(LOG_ID ,photo="https://graph.org/file/461638b52fc162a5d8e56.jpg",caption=alive_text)
         await idle()
     except Exception as e:
         LOGGER.error(str(e))
