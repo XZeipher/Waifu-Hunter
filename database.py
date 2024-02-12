@@ -31,9 +31,6 @@ DB = psycopg2.connect(host='otto.db.elephantsql.com',
                     database='xvoyijqi'
                     )
 
-cusr = DB.cursor()
-DB.rollback()
-DB.autocommit = True
 
 DATABASE = psycopg2.connect(host='otto.db.elephantsql.com',
                     port='5432',
@@ -42,6 +39,4 @@ DATABASE = psycopg2.connect(host='otto.db.elephantsql.com',
                     database='sszitcfg'
                     )
 
-cursor = DATABASE.cursor()
-DATABASE.rollback()
-DATABASE.autocommit = True
+
