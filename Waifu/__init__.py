@@ -76,11 +76,11 @@ async def init():
             database='sszitcfg'
         )
     cursor = await DATABASE.cursor()
-    await DATABASE.rollback()
-    await DATABASE.autocommit = True
+    DATABASE.rollback()
+    DATABASE.autocommit = True
     cusr = await DB.cursor()
-    await DB.rollback()
-    await DB.autocommit = True
+    DB.rollback()
+    DB.autocommit = True
     await asyncio.sleep(1)
     apps = await app.get_me()
     BOT_ID = apps.id
