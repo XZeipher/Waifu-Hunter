@@ -82,12 +82,12 @@ async def init():
     DB.rollback()
     DB.autocommit = True
     await asyncio.sleep(1)
+    await app.start()
     apps = await app.get_me()
     BOT_ID = apps.id
     BOT_USERNAME = apps.username  
     BOT_NAME = apps.first_name
     MENTION_BOT = apps.mention
     LOGGER.info("Activated 🥰")
-    await app.start()
     
 loop.run_until_complete(init()) 
