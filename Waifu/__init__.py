@@ -63,24 +63,24 @@ DATABASE = None
 async def init():
     global BOT_NAME,BOT_USERNAME,BOT_ID,BOT_MENTION,cursor,cusr,DB,DATABASE
     LOGGER.info("Activating Bot Please Wait 🥺")
-    DB = await psycopg2.connect(host='otto.db.elephantsql.com',
+    DB = psycopg2.connect(host='otto.db.elephantsql.com',
             port='5432',
             user='xvoyijqi',
             password='46CquJaKr7qFwJv_GpBB8s7n0HCfi1HG',
             database='xvoyijqi'
         )
-    DATABASE = await psycopg2.connect(host='otto.db.elephantsql.com',
+    DATABASE = psycopg2.connect(host='otto.db.elephantsql.com',
             port='5432',
             user='sszitcfg',
             password='0hUnKVnPcZmBIHj3iKA0AHRiddW4lTGt',
             database='sszitcfg'
         )
     cursor = await DATABASE.cursor()
-    DATABASE.rollback()
-    DATABASE.autocommit = True
+    await DATABASE.rollback()
+    await DATABASE.autocommit = True
     cusr = await DB.cursor()
-    DB.rollback()
-    DB.autocommit = True
+    await DB.rollback()
+    await DB.autocommit = True
     await asyncio.sleep(1)
     apps = await app.get_me()
     BOT_ID = apps.id
