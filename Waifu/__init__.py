@@ -56,12 +56,10 @@ BOT_USERNAME = ""
 BOT_NAME = ""
 BOT_MENTION = ""
 cursor = None
-DATABASE = None
 cusr = None
-DB = None
 
 async def init():
-    global BOT_NAME,BOT_USERNAME,BOT_ID,BOT_MENTION
+    global BOT_NAME,BOT_USERNAME,BOT_ID,BOT_MENTION,cursor,cusr
     LOGGER.info("Activating Bot Please Wait 🥺")
     await cursor = DATABASE.cursor()
     await DATABASE.rollback()
