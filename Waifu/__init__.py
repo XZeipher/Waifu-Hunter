@@ -75,10 +75,10 @@ async def init():
             password='0hUnKVnPcZmBIHj3iKA0AHRiddW4lTGt',
             database='sszitcfg'
         )
-    await cursor = DATABASE.cursor()
+    cursor = await DATABASE.cursor()
     await DATABASE.rollback()
     await DATABASE.autocommit = True
-    await cusr = DB.cursor()
+    cusr = await DB.cursor()
     await DB.rollback()
     await DB.autocommit = True
     await asyncio.sleep(1)
