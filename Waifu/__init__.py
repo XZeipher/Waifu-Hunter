@@ -55,10 +55,20 @@ BOT_ID = 0
 BOT_USERNAME = ""
 BOT_NAME = ""
 BOT_MENTION = ""
+cursor = None
+DATABASE = None
+cusr = None
+DB = None
 
 async def init():
     global BOT_NAME,BOT_USERNAME,BOT_ID,BOT_MENTION
     LOGGER.info("Activating Bot Please Wait 🥺")
+    await cursor = DATABASE.cursor()
+    await DATABASE.rollback()
+    await DATABASE.autocommit = True
+    await cusr = DB.cursor()
+    await DB.rollback()
+    await DB.autocommit = True
     await app.start()
     await asyncio.sleep(1)
     apps = await app.get_me()
