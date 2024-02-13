@@ -26,6 +26,7 @@ from Waifu import *
 from pyrogram import *
 from pyromod import listen
 from pyromod.listen.message import Message
+from pyromod.helpers import ikb
 from telegraph import Telegraph , upload_file
 import psycopg2
 
@@ -43,17 +44,24 @@ telegraph = Telegraph()
 new_user = telegraph.create_account(short_name="WaifuBot")
 auth_url = new_user["auth_url"]
 PROCESS = {}
+keyboard = ikb([
+    [('Common 🟢', 'common_rr'), ('Rare 🟣', 'rare_rr')],
+    [('Legendary 🟡', 'legend_rr')]
+])
 
 @Client.on_message(filters.command("upload") & filters.private & filters.user(AUTH_USERS))
 async def adder(client , message:Message):
     user_id = message.from_user.id
-    #chat = message.chat
+    bot = message.chat
     try:
-        response = await message.chat.ask('**Send the waifu picture**',filters=filters.photo)
+        response1 = await bot.ask('**Send The Waifu Picture 🖼️**',filters=filters.photo)
         down = await response.download()
+        name = await bot.ask('**Send The Waifu Name 📛**',filters=filters.text)
         pic = upload_file(down)
+        anime = await bot.ask('**Send The Waifu Anime Name 💮**',filters=filters.text)
         link = f"https://graph.org{pic[0]}"
-        return await message.reply_photo(link)
+        rarity await bot.ask('**Choose Waifu Rarity 🌀**',reply_markup=keyboard)
+        return print(rarity)
     except Exception as e:
         return await message.reply(str(e))
     
