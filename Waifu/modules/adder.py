@@ -24,8 +24,8 @@ SOFTWARE.
 
 from Waifu import *
 from pyrogram import *
-from pyromod import Client as pyro
-from telegraph import Telegraph , upload_file
+from pyromod import listen
+from telegrap import Telegraph , upload_file
 import psycopg2
 
 cursor.execute("""
@@ -43,17 +43,17 @@ new_user = telegraph.create_account(short_name="WaifuBot")
 auth_url = new_user["auth_url"]
 PROCESS = {}
 
-@pyro.on_message(filters.command("upload") & filters.private & filters.user(AUTH_USERS))
+@Client.on_message(filters.command("upload") & filters.private & filters.user(AUTH_USERS))
 async def adder(client , message):
     user_id = message.from_user.id
-    chat = message.chat
+    chat = message.chat.id
     try:
-        response = await chat.ask('**Send the waifu picture**',filters=filters.photo)
+        response = await client.ask(chat_id=chat,text='**Send the waifu picture**',filters=filters.photo)
         return await message.reply(response)
     except Exception as e:
         return await message.reply(str(e))
     
-    '''
+'''
     replied = message.reply_to_message
     if not replied.photo:
         return await message.reply_text("reply to a image")
@@ -77,7 +77,7 @@ async def adder(client , message):
         return await message.reply_text("Invalid Rarity.\nAllowed Rarity : [🟢,🟣,🟡,🔮]")
     cursor.execute("INSERT INTO character_db (name , anime , rarity , pic) VALUES (%s , %s , %s , %s)",(name,anime,rarity,link,))
     DATABASE.commit()
-    return await message.reply_photo(link,caption=f"✨ Added Character in Database.\nName : {name}\nAnime : {anime}\nRarity : {rarity}")'''
+return await message.reply_photo(link,caption=f"✨ Added Character in Database.\nName : {name}\nAnime : {anime}\nRarity : {rarity}")'''
 
 '''@app.on_message(filters.private)
 async def processing(client,message):
