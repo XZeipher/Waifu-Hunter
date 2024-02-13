@@ -24,6 +24,7 @@ SOFTWARE.
 
 from Waifu import *
 from pyrogram import *
+from pyromod import Client as pyro
 from telegraph import Telegraph , upload_file
 import psycopg2
 
@@ -42,17 +43,13 @@ new_user = telegraph.create_account(short_name="WaifuBot")
 auth_url = new_user["auth_url"]
 PROCESS = {}
 
-@Client.on_message(filters.command("upload") & filters.private & filters.user(AUTH_USERS))
+@pyro.on_message(filters.command("upload") & filters.private & filters.user(AUTH_USERS))
 async def adder(client , message):
     user_id = message.from_user.id
-    try:
-        if user_id not in PROCESS:
-            PROCESS[user_id] = {'link': None,'rarity': None,'name': None,'anime': None}
-            return await message.reply_text("**Send me the image you want to upload.**")
-        else:
-            return await message.reply_text("**Finish your previous uploading.**")
-    except Exception as e:
-        return await message.reply_text(str(e))
+    chat = message.chat
+    response = await chat.ask('**Send the waifu picture**',filters=filters.photo)
+    return await message.reply(response)
+    
     '''
     replied = message.reply_to_message
     if not replied.photo:
@@ -79,7 +76,7 @@ async def adder(client , message):
     DATABASE.commit()
     return await message.reply_photo(link,caption=f"✨ Added Character in Database.\nName : {name}\nAnime : {anime}\nRarity : {rarity}")'''
 
-@app.on_message(filters.private)
+'''@app.on_message(filters.private)
 async def processing(client,message):
     user_id = message.from_user.id
     if user_id not in PROCESS:
@@ -99,4 +96,4 @@ async def processing(client,message):
         PROCESS[user_id]['anime'] = anime
         return await message.reply_text("**Please tell me the rarity.**")
     await message.reply_photo(photo=PROCESS[user_id]['link'],caption=f"Name - {PROCESS[user_id]['name']}\nAnime - {PROCESS[user_id]['anime']}")
-    return PROCESS.pop(user_id)
+    return PROCESS.pop(user_id)'''

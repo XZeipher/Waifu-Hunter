@@ -8,3 +8,4 @@ asyncio
 beautifulsoup4
 telegraph
 tgcrypto
+pyromod
