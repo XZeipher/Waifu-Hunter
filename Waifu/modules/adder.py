@@ -70,7 +70,11 @@ async def adder(client , message:Message):
             rarity = "🟣 Rare"
         elif data == 'legend_rr':
             rarity = "🟡 Legendary"
-        return await message.reply_text(f"Name - {name}\nAnime - {anime}\nRarity - {rarity}")
+        print(name)
+        print(anime)
+        print(rarity)
+        return
+        #return await message.reply_text(f"Name - {name}\nAnime - {anime}\nRarity - {rarity}")
     except Exception as e:
         return await message.reply(str(e))
     
