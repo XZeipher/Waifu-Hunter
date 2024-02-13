@@ -50,7 +50,8 @@ async def adder(client , message:Message):
     #chat = message.chat
     try:
         response = await message.chat.ask('**Send the waifu picture**',filters=filters.photo)
-        return await message.reply(response)
+        bruh = response.download()
+        return await message.reply_photo(bruh)
     except Exception as e:
         return await message.reply(str(e))
     
