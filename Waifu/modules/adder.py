@@ -54,7 +54,7 @@ async def adder(client , message:Message):
     user_id = message.from_user.id
     bot = message.chat
     try:
-        response1 = await bot.ask('**Send The Waifu Picture 🖼️**',filters=filters.photo)
+        response = await bot.ask('**Send The Waifu Picture 🖼️**',filters=filters.photo)
         down = await response.download()
         name = await bot.ask('**Send The Waifu Name 📛**',filters=filters.text)
         pic = upload_file(down)
