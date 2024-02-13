@@ -62,7 +62,7 @@ async def adder(client , message:Message):
         link = f"https://graph.org{pic[0]}"
         rarity = await client.send_message(chat_id=user_id,text='**Choose Waifu Rarity 🌀**',reply_markup=keyboard)
         selection = await rarity.wait_for_click(from_user_id=user_id)
-        return print(rarity)
+        return print(selection)
     except Exception as e:
         return await message.reply(str(e))
     
