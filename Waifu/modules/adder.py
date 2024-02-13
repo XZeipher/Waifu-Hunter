@@ -47,8 +47,11 @@ PROCESS = {}
 async def adder(client , message):
     user_id = message.from_user.id
     chat = message.chat
-    response = await chat.ask('**Send the waifu picture**',filters=filters.photo)
-    return await message.reply(response)
+    try:
+        response = await chat.ask('**Send the waifu picture**',filters=filters.photo)
+        return await message.reply(response)
+    except Exception as e:
+        return await message.reply(str(e))
     
     '''
     replied = message.reply_to_message
