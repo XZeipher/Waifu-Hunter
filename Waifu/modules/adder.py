@@ -25,7 +25,7 @@ SOFTWARE.
 from Waifu import *
 from pyrogram import *
 from pyromod import listen
-from telegrap import Telegraph , upload_file
+from telegraph import Telegraph , upload_file
 import psycopg2
 
 cursor.execute("""
