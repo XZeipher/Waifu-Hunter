@@ -25,6 +25,7 @@ SOFTWARE.
 from Waifu import *
 from pyrogram import *
 from pyromod import listen
+from pyromod.listen.message import Message
 from telegraph import Telegraph , upload_file
 import psycopg2
 
@@ -44,11 +45,11 @@ auth_url = new_user["auth_url"]
 PROCESS = {}
 
 @Client.on_message(filters.command("upload") & filters.private & filters.user(AUTH_USERS))
-async def adder(client , message):
+async def adder(client , message:Message):
     user_id = message.from_user.id
-    chat = message.chat.id
+    #chat = message.chat
     try:
-        response = await Client.ask(chat_id=chat,text='**Send the waifu picture**',filters=filters.photo)
+        response = await message.chat.ask('**Send the waifu picture**',filters=filters.photo)
         return await message.reply(response)
     except Exception as e:
         return await message.reply(str(e))
