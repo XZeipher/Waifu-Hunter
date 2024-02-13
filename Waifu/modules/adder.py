@@ -24,7 +24,7 @@ SOFTWARE.
 
 from Waifu import *
 from pyrogram import *
-from pyromod import listen
+from pyromod import Client as cli
 from telegraph import Telegraph , upload_file
 import psycopg2
 
@@ -48,7 +48,7 @@ async def adder(client , message):
     user_id = message.from_user.id
     chat = message.chat.id
     try:
-        response = await client.ask(chat_id=chat,text='**Send the waifu picture**',filters=filters.photo)
+        response = await cli.ask(chat_id=chat,text='**Send the waifu picture**',filters=filters.photo)
         return await message.reply(response)
     except Exception as e:
         return await message.reply(str(e))
