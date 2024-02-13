@@ -24,7 +24,7 @@ SOFTWARE.
 
 from Waifu import *
 from pyrogram import *
-from pyromod import Client as cli
+from pyromod.listen import Client as cli
 from telegraph import Telegraph , upload_file
 import psycopg2
 
