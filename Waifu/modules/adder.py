@@ -53,6 +53,7 @@ keyboard = ikb([
 async def adder(client , message:Message):
     user_id = message.from_user.id
     bot = message.chat
+    rarity = None
     try:
         response = await bot.ask('**Send The Waifu Picture 🖼️**',filters=filters.photo)
         down = await response.download()
@@ -60,9 +61,17 @@ async def adder(client , message:Message):
         pic = upload_file(down)
         anime = await bot.ask('**Send The Waifu Anime Name 💮**',filters=filters.text)
         link = f"https://graph.org{pic[0]}"
-        rarity = await client.send_message(chat_id=user_id,text='**Choose Waifu Rarity 🌀**',reply_markup=keyboard)
-        selection = await rarity.wait_for_click(from_user_id=user_id)
-        return print(selection)
+        rare = await client.send_message(chat_id=user_id,text='**Choose Waifu Rarity 🌀**',reply_markup=keyboard)
+        selection = await rare.wait_for_click(from_user_id=user_id)
+        data = selection['data']
+        
+        if data == 'common_rr':
+            rarity = "🟢 Common"
+        elif data == 'rare_rr':
+            rarity = "🟣 Rare"
+        elif data == 'legend_rr':
+            rarity = "🟡 Legendary"
+        return await message.reply_photo(photo=link,caption=f"Name - {name}\nAnime - {anime}\nRarity - {rarity}")
     except Exception as e:
         return await message.reply(str(e))
     
