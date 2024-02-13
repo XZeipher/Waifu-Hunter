@@ -63,8 +63,7 @@ async def adder(client , message:Message):
         link = f"https://graph.org{pic[0]}"
         rare = await client.send_message(chat_id=user_id,text='**Choose Waifu Rarity 🌀**',reply_markup=keyboard)
         selection = await rare.wait_for_click(from_user_id=user_id)
-        data = selection['data']
-        
+        data = selection.data
         if data == 'common_rr':
             rarity = "🟢 Common"
         elif data == 'rare_rr':
