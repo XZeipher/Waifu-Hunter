@@ -114,7 +114,7 @@ async def adder_callback(client,query):
     key = data.split("_")[1]
     mention = query.from_user.mention
     cursor.execute("SELECT * FROM pending_task WHERE key = %s",(key,))
-    result = cusr.fetchone()
+    result = cursor.fetchone()
     for row in result:
         id,username,key,name,anime,rarity,pic = row
     cursor.execute("INSERT INTO character_db (name , anime , rarity , pic) VALUES (%s , %s , %s , %s)",(name,anime,rarity,pic,))
