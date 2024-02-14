@@ -26,6 +26,7 @@ import random
 import string
 from Waifu import *
 from pyrogram import *
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup 
 from pyromod import listen
 from pyromod.listen.message import Message
 from pyromod.helpers import ikb
