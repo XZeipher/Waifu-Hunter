@@ -123,8 +123,8 @@ async def adder_callback(client,query):
     cursor.execute("DELETE FROM pending_task WHERE key = %s",(key,))
     DATABASE.commit()
     await query.answer()
-    cap = query.message.caption
-    return await query.edit_message_caption(f"{cap}\n**Rejected By {mention}**")
+    cap = query.message.caption.html
+    return await query.edit_message_caption(f"{cap}\n\n**Rejected By {mention}**")
 '''
     replied = message.reply_to_message
     if not replied.photo:
