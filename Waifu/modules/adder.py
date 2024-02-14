@@ -22,6 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+import random
+import string
 from Waifu import *
 from pyrogram import *
 from pyromod import listen
@@ -40,6 +42,18 @@ cursor.execute("""
     )
 """)
 DATABASE.commit()
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS pending_task (
+        id SERIAL PRIMARY KEY,
+        user TEXT NOT NULL,
+        key TEXT NOT NULL,
+        name TEXT NOT NULL,
+        anime TEXT NOT NULL,
+        rarity TEXT NOT NULL,
+        pic TEXT NOT NULL
+    )
+""")
+DATABASE.commit()
 telegraph = Telegraph()
 new_user = telegraph.create_account(short_name="WaifuBot")
 auth_url = new_user["auth_url"]
@@ -48,6 +62,13 @@ keyboard = ikb([
     [('Common 🟢', 'common_rr'), ('Rare 🟣', 'rare_rr')],
     [('Legendary 🟡', 'legend_rr')]
 ])
+pending = """
+```📸 **{} requested to upload waifu**```
+
+🌟 **Name ➔ {}**
+🎬 **Anime ➔ {}**
+💎 **Rarity ➔ {}**"""
+
 
 @Client.on_message(filters.command("upload") & filters.private & filters.user(AUTH_USERS))
 async def adder(client , message:Message):
@@ -70,13 +91,19 @@ async def adder(client , message:Message):
             rarity = "🟣 Rare"
         elif data == 'legend_rr':
             rarity = "🟡 Legendary"
-        #print(name)
-        #print(anime)
-       # print(rarity)
-      #  return
-        return await message.reply_photo(photo=link,caption=f"Name - {name.text}\nAnime - {anime.text}\nRarity - {rarity}")
+        await rare.edit_text('**Uploading....**')
+        key = lambda length: ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
+        cursor.execute("INSERT INTO pending_task (user , key , name , anime , rarity , pic) VALUES (%s , %s , %s , %s , %s , %s)",(message.from_user.mention,key,f"{name.text.title() }",f"{ anime.text.title() }",rarity,link,))
+        DATABASE.commit()
+        cli_keyboard = InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("Accept ✅",callback_data=f"accept_{key}"), InlineKeyboardButton("Reject ❌",callback_data=f"reject_{key}"),]
+            ]
+        )
+        await client.send_photo(chat_id=-1002065871628,photo=link,caption=pending.format(message.from_user.mention,name.text.title(),anime.text.title(),rarity),reply_markup=cli_keyboard) 
+        return await rare.edit_text('**Your Waifu Upload Request Sent To @WaifuHunterApproval\nAdmins Will Review Your Request As Soon As Possible.**')
     except Exception as e:
-        return await message.reply(str(e))
+        return print(str(e))
     
 '''
     replied = message.reply_to_message
