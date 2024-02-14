@@ -45,7 +45,7 @@ BLOCKED_USERS = set()
 BLOCK_DICT = {}
 flood_limit = 0
 app = Client(
-    "WaifuxpytHunter",
+    "WaifuHunter",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
