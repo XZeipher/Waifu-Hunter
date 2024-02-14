@@ -106,7 +106,25 @@ async def adder(client , message:Message):
         return await rare.edit_text('**Your Waifu Upload Request Sent To @WaifuHunterApproval\nAdmins Will Review Your Request As Soon As Possible.**')
     except Exception as e:
         return print(str(e))
+
+
+@app.on_callback_query(filters.regex(r"^accept_") & filters.user(OMNI_USERS))
+async def adder_callback(client,query):
+    data = query.data
+    key = data.split("_")[1]
     
+
+
+@app.on_callback_query(filters.regex(r"^reject_") & filters.user(OMNI_USERS))
+async def adder_callback(client,query):
+    data = query.data
+    mention = query.from_user.mention
+    key = data.split("_")[1]
+    cursor.execute("DELETE FROM pending_task WHERE key = %s",(key,))
+    DATABASE.commit()
+    await query.answer()
+    cap = query.message.caption
+    return await query.edit_message_caption(f"{cap}\n**Rejected By {mention}**")
 '''
     replied = message.reply_to_message
     if not replied.photo:
