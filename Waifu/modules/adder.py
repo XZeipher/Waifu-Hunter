@@ -64,7 +64,9 @@ keyboard = ikb([
     [('Legendary 🟡', 'legend_rr')]
 ])
 pending = """
-```📸 {} requested to upload waifu```
+```Terminal
+📸 {} requested to upload waifu
+```
 🌟 **Name ➔ {}**
 🎬 **Anime ➔ {}**
 💎 **Rarity ➔ {}**"""
