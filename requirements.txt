@@ -5,6 +5,7 @@ requests
 psycopg2
 pytz
 asyncio
-tgcrypto
 beautifulsoup4
 telegraph
+tgcrypto
+pyromod

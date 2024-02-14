@@ -25,9 +25,10 @@ SOFTWARE.
 import time
 import logging
 import asyncio
+import psycopg2
 from config import *
-from database import *
 from pyrogram import Client
+from pyromod import listen
 import pytz
 
 loop = asyncio.get_event_loop()
@@ -44,7 +45,7 @@ BLOCKED_USERS = set()
 BLOCK_DICT = {}
 flood_limit = 0
 app = Client(
-    "WaifuHunter",
+    "WaifuxpytHunter",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
@@ -55,10 +56,33 @@ BOT_ID = 0
 BOT_USERNAME = ""
 BOT_NAME = ""
 BOT_MENTION = ""
+cursor = None
+cusr = None
+DB = None
+DATABASE = None
 
 async def init():
-    global BOT_NAME,BOT_USERNAME,BOT_ID,BOT_MENTION
+    global BOT_NAME,BOT_USERNAME,BOT_ID,BOT_MENTION,cursor,cusr,DB,DATABASE
     LOGGER.info("Activating Bot Please Wait 🥺")
+    DB = psycopg2.connect(host='otto.db.elephantsql.com',
+            port='5432',
+            user='xvoyijqi',
+            password='46CquJaKr7qFwJv_GpBB8s7n0HCfi1HG',
+            database='xvoyijqi'
+        )
+    DATABASE = psycopg2.connect(host='otto.db.elephantsql.com',
+            port='5432',
+            user='sszitcfg',
+            password='0hUnKVnPcZmBIHj3iKA0AHRiddW4lTGt',
+            database='sszitcfg'
+        )
+    cursor = DATABASE.cursor()
+    DATABASE.rollback()
+    DATABASE.autocommit = True
+    cusr = DB.cursor()
+    DB.rollback()
+    DB.autocommit = True
+    await asyncio.sleep(1)
     await app.start()
     apps = await app.get_me()
     BOT_ID = apps.id
