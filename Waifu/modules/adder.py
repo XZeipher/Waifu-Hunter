@@ -92,7 +92,7 @@ async def adder(client , message:Message):
         elif data == 'legend_rr':
             rarity = "🟡 Legendary"
         await rare.edit_text('**Uploading....**')
-        key = lambda length: ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
+        key = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
         cursor.execute("INSERT INTO pending_task (username , key , name , anime , rarity , pic) VALUES (%s , %s , %s , %s , %s , %s)",(message.from_user.mention,key,f"{name.text.title() }",f"{ anime.text.title() }",rarity,link,))
         DATABASE.commit()
         cli_keyboard = InlineKeyboardMarkup(
