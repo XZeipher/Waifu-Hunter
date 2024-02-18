@@ -25,12 +25,14 @@ SOFTWARE.
 import json , httpx , psycopg2 , requests , asyncio , random , time
 from Waifu import *
 from Waifu.functions.watch_db import insert,updaters,delete
+from Waifu.functions.currency_db import add_fragments
 from Waifu.functions.stats_db import add_chat
 from Waifu.functions.events_db import winter_check
 from pyrogram import *
 from pyrogram.types import *
 
 WATCH_DICT = {}
+spawn_rates = {"Common": 0.90, "Legendary": 0.005, "Rare": 0.10}
 pop_text = """**{} Waifu has popped out from nowhere!
 Bring her to your bed by sending**
 /hunt name"""
@@ -46,14 +48,15 @@ His/Her name is **{}**, remember it next time!"""
 
 catch_text = """✔️ OwO you caught a {} waifu **{}**.
 This waifu has been added to your harem."""
+frg_text = "**You received** `˗ˏˋ𓆩†𓆪ˊˎ˗ {}` **Celestial Fragments for hunting down {} waifu.**"
 
-
+'''
 async def randomized_choice():
     choices = ["winter", "normal"]
     probabilities = [0.3, 0.7]
     result = random.choices(choices, weights=probabilities)[0]
     return result
-
+'''
 
 @Client.on_message(filters.group, group=69)
 async def _watchers(_, message):
@@ -64,42 +67,16 @@ async def _watchers(_, message):
         WATCH_DICT[chat_id] = {'count': 0, 'running_count': 0, 'name': None, 'pic': None,'anime':None,'rarity':None, 'interval': 100}
     WATCH_DICT[chat_id]['count'] += 1
     if WATCH_DICT[chat_id]['count'] == WATCH_DICT[chat_id]['interval']:
-        event = await winter_check()
-        if not event:
-            try:
-                cursor.execute("SELECT * FROM character_db")
-                result = cursor.fetchall()
-                data = random.choice(result)
-                name = data[1]
-                anime = data[2]
-                rarity = data[3]
-                pic = data[4]
-            except:
-                return
-        else:
-            toss_event = await randomized_choice()
-            if toss_event == "winter":
-                try:
-                    cursor.execute("SELECT * FROM winter_characters")
-                    result = cursor.fetchall()
-                    data = random.choice(result)
-                    name = data[1]
-                    anime = data[2]
-                    rarity = data[3]
-                    pic = data[4]
-                except:
-                    return
-            else:
-                try:
-                    cursor.execute("SELECT * FROM character_db")
-                    result = cursor.fetchall()
-                    data = random.choice(result)
-                    name = data[1]
-                    anime = data[2]
-                    rarity = data[3]
-                    pic = data[4]
-                except:
-                    return
+        rand_num = random.random()
+        rate_detector = next((category for category, rate in spawn_rates.items() if rand_num < rate), "Rare")
+        rate_waifu = {"Common": "🟢 Common", "Legendary": "🟡 Legendary", "Rare": "🟣 Rare"}.get(rate_detector)
+        cursor.execute("SELECT * FROM character_db WHERE rarity =%s",(rate_waifu,))
+        result = cursor.fetchall()
+        data = random.choice(result)
+        name = data[1]
+        anime = data[2]
+        rarity = data[3]
+        pic = data[4]
         try:
             rrr = rarity.split(maxsplit=1)[0]
             msg = await _.send_photo(chat_id, photo=pic, caption=pop_text.format(rrr),protect_content=True)
@@ -126,20 +103,26 @@ async def protecc(client , message):
     user_id = message.from_user.id
     if chat_id not in WATCH_DICT or not WATCH_DICT[chat_id]['name']:
         return await message.reply_text("No waifu to protecc at the moment. Keep an eye out for the next one!")
+    if not message.text.split(maxsplit=1)[1]:
+        return await message.reply_text("❌ Rip, that's not quite right.")
     guess = message.text.split(maxsplit=1)[1].lower()
-    guess2 = message.text.split(" ")[1].lower()
     name = WATCH_DICT[chat_id]['name'].lower()
-    if guess == name or guess2 in name.split() or guess in name:
+    sorted_guess = ' '.join(sorted(guess.split()))
+    sorted_name = ' '.join(sorted(name.split()))
+    if (len(sorted_guess.split()) > 1 and sorted_guess == sorted_name) or (len(sorted_guess.split()) == 1 and sorted_guess in sorted_name.split()):
         character_name = WATCH_DICT[chat_id]['name']
         character_pic = WATCH_DICT[chat_id]['pic']
         anime = WATCH_DICT[chat_id]['anime']
         rarity = WATCH_DICT[chat_id]['rarity']
+        amount = random.randint(*{'🟣 Rare': (4, 7), '🟡 Legendary': (8, 15), '🟢 Common': (1, 3)}.get(rarity, (0, 0)))
         updated = await updaters(user_id, character_pic)
         if updated:
             WATCH_DICT.pop(chat_id)
             return await message.reply_text(catch_text.format(rarity,character_name))
         await insert(user_id, character_name, anime,rarity,character_pic,"0")
         WATCH_DICT.pop(chat_id)
-        return await message.reply_text(catch_text.format(rarity,character_name))
+        await message.reply_text(catch_text.format(rarity,character_name))
+        await add_fragments(user_id,amount)
+        return await message.reply_text(frg_text.format(amount,rarity))
     else:
         return await message.reply_text("❌ Rip, that's not quite right.")
