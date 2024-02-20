@@ -1,23 +1,12 @@
-import random
 from Waifu import cusr, DB
-
-cusr.execute("""
-    CREATE TABLE IF NOT EXISTS exp_model (
-        id SERIAL PRIMARY KEY,
-        user_id VARCHAR(255) NOT NULL,
-        exp VARCHAR(255) NOT NULL,
-        rank TEXT NOT NULL
-    )
-""")
-DB.commit()
 
 class WaifuClient:
     level_thresholds = {
-        "S Class": 1000,
-        "A Class": 750,
-        "B Class": 500,
-        "C Class": 250,
-        "D Class": 100,
+        "S Class": 10000,
+        "A Class": 5000,
+        "B Class": 1000,
+        "C Class": 500,
+        "D Class": 200,
         "E Class": 0
     }
     
@@ -55,6 +44,10 @@ class WaifuClient:
                 VALUES (%s, %s, %s)
             """, (str(self.user_id), str(new_exp), new_rank))
         
+        if new_rank != current_exp_model[3]:  # Check if the rank has changed (level up)
+            celestial_fragments_reward = self.celestial_fragments_rewards.get(new_rank, 0)
+            self.reward_celestial_fragments(celestial_fragments_reward)
+        
         DB.commit()
 
     def calculate_rank(self, exp):
@@ -62,6 +55,10 @@ class WaifuClient:
             if exp >= threshold:
                 return rank
         return "E Class"
+
+    def reward_celestial_fragments(self, fragments):
+        # Implement your logic to reward celestial fragments to the user
+        pass
 
 async def fetch_model(user_id):
     cusr.execute("SELECT * FROM exp_model WHERE user_id = %s", (str(user_id),))
