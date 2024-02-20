@@ -34,7 +34,7 @@ class WaifuClient:
         self.user_id = user_id
 
     async def handle_waifu_catch(self):
-        exp_gained = random.randint(1, 200)
+        exp_gained = random.randint(99, 200)
         await self.update_experience(exp_gained)
 
     async def update_experience(self, exp_gained):
