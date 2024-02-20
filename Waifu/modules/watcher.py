@@ -27,6 +27,7 @@ from Waifu import *
 from Waifu.functions.watch_db import insert,updaters,delete
 from Waifu.functions.currency_db import add_fragments
 from Waifu.functions.stats_db import add_chat
+from Waifu.functions.exp_modeling import WaifuClient
 from Waifu.functions.events_db import winter_check
 from pyrogram import *
 from pyrogram.types import *
@@ -123,6 +124,8 @@ async def protecc(client , message):
         WATCH_DICT.pop(chat_id)
         await message.reply_text(catch_text.format(rarity,character_name))
         await add_fragments(user_id,amount)
+        waifu_client = WaifuClient(user_id)
+        await waifu_client.handle_waifu_catch()
         return await message.reply_text(frg_text.format(amount,rarity))
     else:
         return await message.reply_text("❌ Rip, that's not quite right.")
