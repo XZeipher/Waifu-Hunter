@@ -120,6 +120,8 @@ async def handle_inline_query(query):
     else:
         cursor.execute("SELECT * FROM character_db")
         fetched = cursor.fetchall()
+        if query.query.lower():
+            fetched = [tup for tup in fetched if query.query.lower() in tup[1].lower()]
         results = []
         for rex in fetched:
             id,name,anime,rarity,pic = rex
