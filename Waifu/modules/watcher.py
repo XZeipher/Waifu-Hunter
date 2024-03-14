@@ -29,6 +29,7 @@ from Waifu.functions.stats_db import add_chat
 from Waifu.functions.events_db import winter_check
 from pyrogram import *
 from pyrogram.types import *
+from pyrogram.enums import ChatMembersFilter
 
 WATCH_DICT = {}
 pop_text = """**{} Waifu has popped out from nowhere!
@@ -40,6 +41,8 @@ new_chat = """
 #NEWCHAT
 CHAT : {}
 """
+exploit_text = """**{} has been caught using a cheat bot.
+If you attempt to cheat again, your harem will be reset.**"""
 
 lost_text = """rip, the waifu has run away already...
 His/Her name is **{}**, remember it next time!"""
@@ -58,10 +61,17 @@ async def randomized_choice():
 @Client.on_message(filters.group, group=69)
 async def _watchers(_, message):
     chat_id = message.chat.id
+    msg = None
     if not message.from_user:
         return
     if chat_id not in WATCH_DICT:
-        WATCH_DICT[chat_id] = {'count': 0, 'running_count': 0, 'name': None, 'pic': None,'anime':None,'rarity':None, 'interval': 100}
+        bots = []
+        async for bot in app.get_chat_members(chat_id, filter=enums.ChatMembersFilter.BOTS):
+            bots.append(bot.user.id)
+        if 6355945378 in bots:
+            WATCH_DICT[chat_id] = {'count': 0, 'running_count': 0, 'name': None, 'pic': None,'anime':None,'rarity':None, 'interval': 100, 'exploit': True}
+        else:
+            WATCH_DICT[chat_id] = {'count': 0, 'running_count': 0, 'name': None, 'pic': None,'anime':None,'rarity':None, 'interval': 100, 'exploit': False}
     WATCH_DICT[chat_id]['count'] += 1
     if WATCH_DICT[chat_id]['count'] == WATCH_DICT[chat_id]['interval']:
         event = await winter_check()
@@ -111,6 +121,13 @@ async def _watchers(_, message):
             await asyncio.sleep(e.value)
 
     if WATCH_DICT[chat_id]['name']:
+        if WATCH_DICT[chat_id]['exploit']:
+            if message.text and message.reply_to_message:
+                if message.text.lower() in ["/waifu@collect_waifu_cheats_bot", "/waifu"] and message.reply_to_message.id == msg.id:
+                    await message.reply_text(exploit_text)
+                    await _.send_message(-1002103089465,text=f"{message.from_user.id} user caught cheating.")
+                    await _.send_message(chat_id, lost_text.format(character))
+                    return WATCH_DICT.pop(chat_id)
         WATCH_DICT[chat_id]['running_count'] += 1
         if WATCH_DICT[chat_id]['running_count'] == 15:
             try:
