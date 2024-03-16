@@ -123,7 +123,8 @@ async def _watchers(_, message):
     if WATCH_DICT[chat_id]['name']:
         if WATCH_DICT[chat_id]['exploit']:
             if message.text and message.reply_to_message:
-                if message.text.lower() in ["/waifu@collect_waifu_cheats_bot", "/waifu"] and message.reply_to_message:
+                endings_to_check = ["waifu", "@collect_waifu_cheats_bot"]
+                if any(message.text.lower().endswith(ending) for ending in endings_to_check) and message.reply_to_message:
                     await _.send_message(chat_id, lost_text.format(WATCH_DICT[chat_id]['name']))
                     WATCH_DICT.pop(chat_id)
                     await message.reply_text(exploit_text.format(message.from_user.mention))
