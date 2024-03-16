@@ -28,7 +28,7 @@ import asyncio
 import psycopg2
 from config import *
 from pyrogram import Client
-#from pyromod import listen
+from pyromod import listen
 import pytz
 
 loop = asyncio.get_event_loop()
