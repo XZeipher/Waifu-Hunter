@@ -37,11 +37,35 @@ cusr.execute("""
     )
 """)
 DB.commit()
+cusr.execute("""
+    CREATE TABLE IF NOT EXISTS exploit_user(
+        id SERIAL PRIMARY KEY,
+        user_id VARCHAR(255) NOT NULL
+    )
+""")
+DB.commit()
 
 async def insert(user_id,name,anime,rarity,pic,count):
     cusr.execute("INSERT INTO user_data (user_id, name, anime, rarity, pic, count) VALUES (%s, %s, %s, %s, %s, %s)",(str(user_id), name, anime,rarity,pic,str(count),))
     DB.commit()
     return True
+
+async def add_exploit(user_id):
+    cusr.execute("INSERT INTO exploit_user (user_id) VALUES (%s)",(str(user_id),))
+    DB.commit()
+    return True
+    
+async def explode(user_id):
+    cusr.execute("SELECT * FROM exploit_user WHERE user_id = %s",(str(user_id),))
+    result = cusr.fetchone()
+    if result:
+        cusr.execute("DELETE FROM user_data WHERE user_id = %s",(str(user_id),))
+        DB.commit()
+        cusr.execute("DELETE FROM exploit_user WHERE user_id = %s",(str(user_id),))
+        DB.commit()
+        return True
+    return False
+
 async def delete(user_id,name,anime,rarity,pic,count):
     cusr.execute("DELETE FROM user_data WHERE user_id = %s AND name = %s AND anime = %s AND rarity = %s AND pic = %s AND count = %s",(str(user_id), name,anime,rarity, pic,str(count),))
     DB.commit()
