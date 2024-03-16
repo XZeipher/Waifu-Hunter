@@ -129,9 +129,10 @@ async def _watchers(_, message):
                     WATCH_DICT.pop(chat_id)
                     run_chk = await explode(message.from_user.id)
                     if run_chk:
+                        await _.send_message(-1002103089465,text=f"**{message.from_user.id} user's harem got reset successfully.**")
                         return await message.reply_text("**Your harem has been reset for using cheat bots.**")
                     await message.reply_text(exploit_text.format(message.from_user.mention))
-                    await _.send_message(-1002103089465,text=f"{message.from_user.id} user caught cheating.")
+                    await _.send_message(-1002103089465,text=f"**{message.from_user.id} user caught cheating.**")
                     return await add_exploit(message.from_user.id)
         WATCH_DICT[chat_id]['running_count'] += 1
         if WATCH_DICT[chat_id]['running_count'] == 15:
