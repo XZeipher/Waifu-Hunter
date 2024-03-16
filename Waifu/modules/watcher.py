@@ -127,7 +127,7 @@ async def _watchers(_, message):
                     WATCH_DICT.pop(chat_id)
                     await message.reply_text(exploit_text.format(message.from_user.mention))
                     await _.send_message(-1002103089465,text=f"{message.from_user.id} user caught cheating.")
-                    await _.send_message(chat_id, lost_text.format(character))
+                    await _.send_message(chat_id, lost_text.format(WATCH_DICT[chat_id]['name']))
                     return 
         WATCH_DICT[chat_id]['running_count'] += 1
         if WATCH_DICT[chat_id]['running_count'] == 15:
