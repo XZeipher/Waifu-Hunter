@@ -9,3 +9,4 @@ beautifulsoup4
 telegraph
 tgcrypto
 pyromod
+pillow
