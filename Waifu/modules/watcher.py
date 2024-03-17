@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-import json , httpx , psycopg2 , requests , asyncio , random , time
+import json , httpx , psycopg2 , requests , asyncio , random , time , os
 from Waifu import *
 from Waifu.functions.watch_db import insert,updaters,delete,add_exploit,explode
 from Waifu.functions.stats_db import add_chat
@@ -30,6 +30,7 @@ from Waifu.functions.events_db import winter_check
 from pyrogram import *
 from pyrogram.types import *
 from pyrogram.enums import ChatMembersFilter
+from PIL import Image, ImageDraw, ImageFont
 
 WATCH_DICT = {}
 pop_text = """**{} Waifu has popped out from nowhere!
@@ -111,12 +112,23 @@ async def _watchers(_, message):
                 except:
                     return
         try:
+            mal_chk = await app.send_photo(-1002104891034,pic)
+            photo_path = await app.download_media(mal_chk.photo.file_id)
+            image = Image.open(photo_path)
+            draw = ImageDraw.Draw(image)
+            num_dots = random.randint(1, 99999)
+            dots = '.' * num_dots
+            font = ImageFont.truetype("impact.ttf", 1)
+            draw.text((10, 10), f"{dots}", fill="white", font=font)
+            output_path = "output.jpg"
+            image.save(output_path)
             rrr = rarity.split(maxsplit=1)[0]
-            msg = await _.send_photo(chat_id, photo=pic, caption=pop_text.format(rrr),protect_content=True)
+            msg = await _.send_photo(chat_id, photo=output_path, caption=pop_text.format(rrr),protect_content=True)
             WATCH_DICT[chat_id]['name'] = name
             WATCH_DICT[chat_id]['pic'] = pic
             WATCH_DICT[chat_id]['anime'] = anime
             WATCH_DICT[chat_id]['rarity'] = rarity
+            os.remove(output_path)
         except errors.FloodWait as e:
             await asyncio.sleep(e.value)
 
