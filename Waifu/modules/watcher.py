@@ -24,7 +24,7 @@ SOFTWARE.
 
 import json , httpx , psycopg2 , requests , asyncio , random , time , os
 from Waifu import *
-from Waifu.functions.watch_db import insert,updaters,delete,add_exploit,explode
+from Waifu.functions.watch_db import insert,updaters,delete
 from Waifu.functions.stats_db import add_chat
 from Waifu.functions.events_db import winter_check
 from pyrogram import *
@@ -133,19 +133,6 @@ async def _watchers(_, message):
             await asyncio.sleep(e.value)
 
     if WATCH_DICT[chat_id]['name']:
-        if WATCH_DICT[chat_id]['exploit']:
-            if message.text and message.reply_to_message:
-                endings_to_check = ["waifu", "@collect_waifu_cheats_bot"]
-                if any(message.text.lower().endswith(ending) for ending in endings_to_check) and message.reply_to_message:
-                    await _.send_message(chat_id, lost_text.format(WATCH_DICT[chat_id]['name']))
-                    WATCH_DICT.pop(chat_id)
-                    run_chk = await explode(message.from_user.id)
-                    if run_chk:
-                        await _.send_message(-1002103089465,text=f"**{message.from_user.id} user's harem got reset successfully.**")
-                        return await message.reply_text("**Your harem has been reset for using cheat bots.**")
-                    await message.reply_text(exploit_text.format(message.from_user.mention))
-                    await _.send_message(-1002103089465,text=f"**{message.from_user.id} user caught cheating.**")
-                    return await add_exploit(message.from_user.id)
         WATCH_DICT[chat_id]['running_count'] += 1
         if WATCH_DICT[chat_id]['running_count'] == 15:
             try:
