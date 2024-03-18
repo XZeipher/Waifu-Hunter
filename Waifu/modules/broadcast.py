@@ -9,7 +9,11 @@ async def bcast(client,message):
     chats = cursor.fetchall()
     for chat in chats:
         try:
-            await message.reply_to_message.forward(int(chat[0]))
+            msg = await message.reply_to_message.forward(int(chat[0]))
+            try:
+                await msg.pin()
+            except:
+                continue
         except:
             continue
     cursor.execute("SELECT user_id FROM users_db")
