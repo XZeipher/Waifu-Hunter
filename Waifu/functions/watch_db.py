@@ -78,7 +78,7 @@ async def redeem_code(code,user_id):
     cusr.execute("INSERT INTO user_data (user_id, name, anime, rarity, pic, count) VALUES (%s, %s, %s, %s, %s, %s)",(str(user_id), name, anime,rarity,pic,str(count),))
     DB.commit()
     new = int(counts) - 1
-    cusr.execute("UPDATE codes SET count = %s WHERE user_id = %s AND pic = %s",(str(new) , str(user_id),pic,))
+    cusr.execute("UPDATE codes SET count = %s WHERE code = %s AND pic = %s",(str(new) , code,pic,))
     DB.commit()
     return True
     
