@@ -16,8 +16,8 @@ async def redeemer(client,message):
     try:
         cusr.execute("SELECT * FROM codes WHERE code = %s",(code,))
         esep = cusr.fetchone()
-        name = esep[5]
-        cusr.execute("SELECT * FROM user_data WHERE pic = %s",(esep[5],))
+        name = esep[2]
+        cusr.execute("SELECT * FROM user_data WHERE name = %s",(name,))
         result = cusr.fetchone()
     except:
         return await temp.edit_text("Invalid Code")
