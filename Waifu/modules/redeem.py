@@ -7,9 +7,11 @@ from Waifu.functions.watch_db import redeem_code
 async def redeemer(client,message):
     user_id = message.from_user.id
     temp = await message.reply_text("processing....")
-    if not message.text.split(maxsplit=1)[1]:
+    try:
+        code = message.text.split(maxsplit=1)[1].strip()
+    except:
         return await temp.edit_text("Enter the redeem code.")
-    code = message.text.split(maxsplit=1)[1].strip()
+    
     try:
         cusr.execute("SELECT * FROM codes WHERE code = %s",(code,))
         esep = cusr.fetchone()
