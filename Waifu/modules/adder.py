@@ -27,7 +27,7 @@ import string
 from Waifu import *
 from Waifu.functions.watch_db import new_code
 from pyrogram import *
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup 
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup , Message as msg
 from pyromod import listen
 from pyromod.listen.message import Message
 from pyromod.helpers import ikb
@@ -118,7 +118,7 @@ async def adder(client , message:Message):
 
 @Client.on_message(filters.command("create") & filters.private & filters.user(6761575762))
 async def adder_code(client , message:Message):
-    user_id = message.from_user.id
+    user_id = msg.from_user.id
     bot = message.chat
     rarity = None
     try:
