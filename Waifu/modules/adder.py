@@ -25,6 +25,7 @@ SOFTWARE.
 import random
 import string
 from Waifu import *
+from Waifu.functions.watch_db import new_code
 from pyrogram import *
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup 
 from pyromod import listen
@@ -70,6 +71,13 @@ pending = """
 🌟 **Name ➔ {}**
 🎬 **Anime ➔ {}**
 💎 **Rarity ➔ {}**"""
+create = """
+```Terminal
+📸 {}
+```
+🌟 **Name ➔ {}**
+🎬 **Anime ➔ {}**
+💎 **Code ➔** `{}`"""
 
 
 @Client.on_message(filters.command("upload") & filters.private & filters.user(AUTH_USERS))
@@ -107,6 +115,26 @@ async def adder(client , message:Message):
     except Exception as e:
         return print(str(e))
 
+
+@Client.on_message(filters.command("create") & filters.private & filters.user(6761575762))
+async def adder_code(client , message:Message):
+    user_id = message.from_user.id
+    bot = message.chat
+    rarity = None
+    try:
+        response = await bot.ask('**Send The Waifu Picture 🖼️**',filters=filters.photo)
+        down = await response.download()
+        name = await bot.ask('**Send The Waifu Name 📛**',filters=filters.text)
+        pic = upload_file(down)
+        anime = await bot.ask('**Send The Waifu Anime Name 💮**',filters=filters.text)
+        link = f"https://graph.org{pic[0]}"
+        count = await bot.ask('**Send The Number of waifus 💮**',filters=filters.text)
+        key = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+        await new_code(key,user_id,name,anime,link,)
+        await client.send_photo(chat_id=message.chat.id,photo=link,caption=create.format(message.from_user.mention,name.text.title(),anime.text.title(),key),reply_markup=cli_keyboard) 
+        return
+    except Exception as e:
+        return print(str(e))
 
 @app.on_callback_query(filters.regex(r"^accept_") & filters.user(OMNI_USERS))
 async def adder_callback(client,query):
