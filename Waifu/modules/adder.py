@@ -130,7 +130,7 @@ async def adder_code(client , message:Message):
         link = f"https://graph.org{pic[0]}"
         count = await bot.ask('**Send The Number of waifus 💮**',filters=filters.text)
         key = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
-        await new_code(key,user_id,name,anime,link,)
+        await new_code(key,user_id,name,anime,link,count)
         await client.send_photo(chat_id=message.chat.id,photo=link,caption=create.format(message.from_user.mention,name.text.title(),anime.text.title(),key),reply_markup=cli_keyboard) 
         return
     except Exception as e:
