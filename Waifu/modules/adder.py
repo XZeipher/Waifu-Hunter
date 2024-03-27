@@ -118,7 +118,8 @@ async def adder(client , message:Message):
 
 @Client.on_message(filters.command("create") & filters.private & filters.user(6761575762))
 async def adder_code(client , message:Message):
-    user_id = message.chat.id
+    username = message.from_user.username
+    user_id = (await client.get_users(username)).id
     bot = message.chat
     rarity = None
     try:
