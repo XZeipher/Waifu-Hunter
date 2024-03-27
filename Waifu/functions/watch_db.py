@@ -67,7 +67,7 @@ async def redeem_code(code,user_id):
     result = cusr.fetchone()
     if not result:
         return False
-    counts = result[7]
+    counts = result[6]
     if int(counts) < 1:
         return False
     name = result[2]
