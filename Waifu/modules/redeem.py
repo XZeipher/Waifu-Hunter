@@ -6,6 +6,7 @@ from Waifu.functions.watch_db import redeem_code
 @Client.on_message(filters.command("redeem") & filters.private)
 async def redeemer(client,message):
     user_id = message.from_user.id
+    name = None
     temp = await message.reply_text("processing....")
     try:
         code = message.text.split(maxsplit=1)[1].strip()
@@ -15,6 +16,7 @@ async def redeemer(client,message):
     try:
         cusr.execute("SELECT * FROM codes WHERE code = %s",(code,))
         esep = cusr.fetchone()
+        name = esep[5]
         cusr.execute("SELECT * FROM user_data WHERE pic = %s",(esep[5],))
         result = cusr.fetchone()
     except:
@@ -24,4 +26,4 @@ async def redeemer(client,message):
     request = await redeem_code(code,user_id)
     if not request:
         return await temp.edit_text("Invalid Code")
-    return await temp.edit_text(f"Successfully Redeemed {esep[2]}")
+    return await temp.edit_text(f"Successfully Redeemed {name}")
