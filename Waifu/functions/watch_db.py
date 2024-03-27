@@ -41,7 +41,6 @@ cusr.execute("""
     CREATE TABLE IF NOT EXISTS codes (
         id SERIAL PRIMARY KEY,
         code TEXT NOT NULL,
-        user_id VARCHAR(255) NOT NULL,
         name TEXT NOT NULL,
         anime TEXT NOT NULL,
         rarity TEXT NOT NULL,
@@ -83,9 +82,9 @@ async def redeem_code(code,user_id):
     DB.commit()
     return True
     
-async def new_code(code,user_id,name,anime,pic,count):
+async def new_code(code,name,anime,pic,count):
     rarity = "💮 Mythical"
-    cusr.execute("INSERT INTO codes (code,user_id, name, anime, rarity, pic, count) VALUES (%s, %s, %s, %s, %s, %s, %s)",(str(code),str(user_id), name, anime,rarity,pic,str(count),))
+    cusr.execute("INSERT INTO codes (code, name, anime, rarity, pic, count) VALUES (%s, %s, %s, %s, %s, %s)",(str(code), name, anime,rarity,pic,str(count),))
     DB.commit()
     return True
 
